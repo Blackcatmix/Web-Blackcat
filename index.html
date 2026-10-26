@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
     body { background: #0a0a0a; color: #fff; font-family: 'Barlow', sans-serif; overflow-x: hidden; }
 
     /* NAVEGACIÓN */
@@ -66,14 +65,8 @@
     .dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, 0.35); cursor: pointer; transition: all 0.25s; }
     .dot.active { background: #C9A84C; width: 24px; border-radius: 5px; }
 
-    /* SECCIONES Y COMPENSACIÓN DE CABECERA (scroll-margin-top) */
-    .sec { 
-      padding: 4.5rem 2rem; 
-      border-bottom: 0.5px solid rgba(255, 255, 255, 0.12); 
-      max-width: 1100px; 
-      margin: 0 auto; 
-      scroll-margin-top: 125px; /* Evita que el menú sticky corte el título */
-    }
+    /* SECCIONES */
+    .sec { padding: 4.5rem 2rem; border-bottom: 0.5px solid rgba(255, 255, 255, 0.12); max-width: 1100px; margin: 0 auto; }
     .sec-label { font-size: 11px; letter-spacing: 4px; color: #C9A84C; margin-bottom: 0.7rem; text-transform: uppercase; font-weight: 600; }
     .sec h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 38px; font-weight: 700; letter-spacing: 2px; margin-bottom: 2rem; text-transform: uppercase; }
     
@@ -87,7 +80,7 @@
     .feat h3 { font-size: 13px; font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem; text-transform: uppercase; color: #fff; }
     .feat p { font-size: 13px; color: #bbb; line-height: 1.6; }
 
-    /* BARRAS (SIN SCROLL, MISMO LARGO TOTAL QUE CULTO) */
+    /* BARRAS: ALINEACIÓN Y ALTURA HOMOGÉNEA */
     .barras-grid { 
       display: grid; 
       grid-template-columns: repeat(4, 1fr); 
@@ -147,19 +140,26 @@
       font-size: 13.5px; 
       color: #dedede; 
       line-height: 1.65; 
-      padding: 1.5rem 1.2rem;
+      padding: 1.4rem 1.2rem;
       border-top: 0.5px solid rgba(255,255,255,0.08); 
       display: flex;
       flex-direction: column;
       flex-grow: 1;
-      justify-content: space-between;
     }
-    .bbody ul { padding-left: 1.1rem; margin-bottom: 1.8rem; }
+    .bbody-list {
+      max-height: 320px;
+      overflow-y: auto;
+      padding-right: 6px;
+      margin-bottom: 1.2rem;
+    }
+    .bbody-list::-webkit-scrollbar { width: 4px; }
+    .bbody-list::-webkit-scrollbar-thumb { background: rgba(201, 168, 76, 0.4); border-radius: 2px; }
+    .bbody ul { padding-left: 1.1rem; }
     .bbody ul li { margin-bottom: 7px; list-style-type: disc; }
-    .bfooter-notes { margin-top: auto; padding-top: 1.2rem; border-top: 0.5px dashed rgba(255,255,255,0.12); }
+    .bfooter-notes { margin-top: auto; padding-top: 1rem; border-top: 0.5px dashed rgba(255,255,255,0.12); }
     .bfooter-notes em { color: #C9A84C; font-size: 12.5px; line-height: 1.5; display: block; font-style: normal; }
 
-    /* UPGRADES (ALTURA EXACTA 250px) */
+    /* UPGRADES CON TAMAÑO EXACTO Y NIVELADO */
     .upgrades-list { display: flex; flex-direction: column; gap: 1.4rem; }
     .upgrade-card { 
       display: grid; 
@@ -194,4 +194,378 @@
     .citem .cl { font-size: 11px; color: #C9A84C; letter-spacing: 2px; margin-bottom: 0.5rem; text-transform: uppercase; font-weight: 600; }
     .citem .cv { font-size: 15px; color: #eee; font-weight: 500; word-break: break-all; }
 
-    footer { text-align: center; padding: 2.5rem 1rem; font-size: 12px; color: #777; letter-spacing: 1.5px; text-transform
+    footer { text-align: center; padding: 2.5rem 1rem; font-size: 12px; color: #777; letter-spacing: 1.5px; text-transform: uppercase; }
+
+    /* RESPONSIVE */
+    @media (max-width: 950px) {
+      .barras-grid { grid-template-columns: repeat(2, 1fr); }
+      .upgrade-card { grid-template-columns: 1fr; height: auto; max-height: none; }
+      .upgrade-img { height: 210px; max-height: 210px; }
+    }
+    @media (max-width: 600px) {
+      nav { flex-direction: column; gap: 1rem; padding: 1rem; }
+      .nav-links { margin-left: 0; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+      .barras-grid { grid-template-columns: 1fr; }
+      .hero { padding: 5rem 1.5rem 4rem; }
+      .carousel-slide { height: 280px; }
+      .sec { padding: 3.5rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVEGACIÓN -->
+<nav>
+  <div class="nav-logo">
+    <img src="https://i.imgur.com/tCUk83c.png" alt="BlackCat Bebidas &amp; Cocktails">
+  </div>
+  <div class="nav-links">
+    <a onclick="document.getElementById('serv').scrollIntoView({behavior:'smooth'})">Servicio</a>
+    <a onclick="document.getElementById('barr').scrollIntoView({behavior:'smooth'})">Barras</a>
+    <a onclick="document.getElementById('upgr').scrollIntoView({behavior:'smooth'})">Upgrades</a>
+    <a onclick="document.getElementById('cont').scrollIntoView({behavior:'smooth'})">Contacto</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Bar Experience</div>
+  <h1>No solo<br>ofrecemos <span>bebidas</span></h1>
+  <p class="hero-sub">Diseñamos experiencias multisensoriales memorables. Cocktelería de autor, tecnología interactiva y mucho estilo para tu evento.</p>
+  
+  <div class="hero-actions">
+    <div class="hero-row-btn">
+      <button class="btn-o" onclick="document.getElementById('barr').scrollIntoView({behavior:'smooth'})">Ver Barras</button>
+      <button class="btn-o" onclick="document.getElementById('upgr').scrollIntoView({behavior:'smooth'})">Ver Upgrades</button>
+    </div>
+    <button class="btn-p" onclick="document.getElementById('cont').scrollIntoView({behavior:'smooth'})">Consultanos</button>
+  </div>
+</div>
+
+<!-- CARROUSEL DE IMÁGENES -->
+<div class="carousel-section">
+  <div class="carousel-container">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-slide">
+        <img src="imagenes/carrousel-1.jpeg" onerror="this.src='carrousel-1.jpeg'" alt="Cocktelería de autor BlackCat">
+        <div class="carousel-caption">Cocktelería de autor y estética de vanguardia</div>
+      </div>
+      <div class="carousel-slide">
+        <img src="imagenes/carrousel-2.jpg" onerror="this.src='carrousel-2.jpg'" alt="Barras móviles exclusivas">
+        <div class="carousel-caption">Barras móviles integrales para eventos memorables</div>
+      </div>
+      <div class="carousel-slide">
+        <img src="imagenes/carrousel-3.jpg" onerror="this.src='carrousel-3.jpg'" alt="Experiencias interactivas">
+        <div class="carousel-caption">Tecnología, rituales e impacto sensorial</div>
+      </div>
+    </div>
+    <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+    <div class="carousel-dots" id="carouselDots">
+      <div class="dot active" onclick="setSlide(0)"></div>
+      <div class="dot" onclick="setSlide(1)"></div>
+      <div class="dot" onclick="setSlide(2)"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN: QUIÉNES SOMOS -->
+<div class="sec" id="serv">
+  <div class="sec-label">Quiénes somos</div>
+  <h2>Bar Experience</h2>
+  <p class="about">Creamos <strong>Bar Experience</strong> para cubrir la necesidad de contar con una propuesta profesional y personalizada de <strong>servicio de barra y coctelería para eventos.</strong><br><br> Vamos desde <strong>propuestas sin alcohol</strong>, naturales y frescas, <strong>hasta barras de autor</strong>, con espirituosos importados y coctelería premium.<br><br>Nos adaptamos a cada <strong>tipo de evento y público</strong>.<br><br>Además, incorporamos <strong>capas de valor (Upgrades)</strong> que son intervenciones con tecnologías innovadoras e interactivas que complementan y enriquecen la experiencia.<br><br>Nuestro servicio es ideal para <strong>empresas, marcas y personas</strong> que valoren la <strong>experiencia, la innovación</strong> y que quieran <strong>diferenciarse</strong> en <strong>eventos y celebraciones</strong>.<br><br><strong>Vos elegí tu estilo, que nosotros hacemos el resto.</strong></p>   
+  <div class="feats">
+    <div class="feat"><div class="feat-n">01</div><h3>Cocktelería premium</h3><p>Desde mocktails hasta barras de autor con espirituosos importados</p></div>
+    <div class="feat"><div class="feat-n">02</div><h3>Experiencia única</h3><p>Tecnología interactiva integrada a cada evento</p></div>
+    <div class="feat"><div class="feat-n">03</div><h3>A medida</h3><p>Adaptado a empresas, marcas, bodas y celebraciones</p></div>
+    <div class="feat"><div class="feat-n">04</div><h3>Profesional</h3><p>Presentación cuidada y atención personalizada</p></div>
+  </div>
+</div>
+
+<!-- SECCIÓN: BARRAS (4 BARRAS NIVELADAS) -->
+<div class="sec" id="barr">
+  <div class="sec-label">Nuestras propuestas</div>
+  <h2>Elegí tu barra</h2>
+  
+  <div class="barras-grid">
+    <!-- 1. ZERO -->
+    <details class="bcard">
+      <summary class="bhead">
+        <h3>ZERO</h3>
+        <div class="desc">Cien por ciento sabor con cero alcohol.</div>
+        <div class="btrigger">
+          <span class="btxt">Ver Carta</span>
+          <span class="bchevron"></span>
+        </div>
+      </summary>
+      <div class="bbody">
+        <div class="bbody-list">
+          <ul>
+            <li>Mojito Zero (Clásico o Frutos rojos)</li>
+            <li>Sunset Zero</li>
+            <li>Aguas saborizadas</li>
+            <li>Caipirinha Zero (Clásica o Frutos rojos)</li>
+            <li>Gin Tonic Zero</li>
+            <li>Green Fresh (Agua saborizada)</li>
+          </ul>
+        </div>
+        <div class="bfooter-notes">
+          <em>Ideal para eventos familiares, brunchs, adolescentes o recepciones de día.</em>
+        </div>
+      </div>
+    </details>
+
+    <!-- 2. ESENCIAL -->
+    <details class="bcard">
+      <summary class="bhead">
+        <h3>ESENCIAL</h3>
+        <div class="desc">Elegancia y carácter de la coctelería esencial.</div>
+        <div class="btrigger">
+          <span class="btxt">Ver Carta</span>
+          <span class="bchevron"></span>
+        </div>
+      </summary>
+      <div class="bbody">
+        <div class="bbody-list">
+          <ul>
+            <li>Gin tonic Nacional (Clásico, Berry, Herbal, Fresh)</li>
+            <li>Fernet con Coca</li>
+            <li>Cinzano con Pomelo</li>
+            <li>Cinzano con soda</li>
+          </ul>
+        </div>
+        <div class="bfooter-notes">
+          <em>Perfecta para eventos relajados, cumpleaños y celebraciones informales.</em>
+        </div>
+      </div>
+    </details>
+
+    <!-- 3. CLÁSICA -->
+    <details class="bcard">
+      <summary class="bhead">
+        <h3>CLÁSICA</h3>
+        <div class="desc">Variedad y sofisticación para un público exigente.</div>
+        <div class="btrigger">
+          <span class="btxt">Ver Carta</span>
+          <span class="bchevron"></span>
+        </div>
+      </summary>
+      <div class="bbody">
+        <div class="bbody-list">
+          <ul>
+            <li>Gin tonic Nacional (Clásico, Berry, Herbal, Fresh)</li>
+            <li>Fernet con Coca</li>
+            <li>Cinzano con Pomelo</li>
+            <li>Cinzano con soda</li>
+            <li>Garibaldi (Campari con naranja)</li>
+            <li>Campari con tónica</li>
+            <li>Caipiroska</li>
+            <li>Mojito</li>
+            <li>Caipi Zero (Clásica o Frutos rojos)</li>
+            <li>Green Fresh (Agua saborizada)</li>
+          </ul>
+        </div>
+        <div class="bfooter-notes">
+          <em>Pensada para bodas, eventos premium o celebraciones destacadas.</em>
+        </div>
+      </div>
+    </details>
+
+    <!-- 4. CULTO -->
+    <details class="bcard">
+      <summary class="bhead">
+        <h3>CULTO</h3>
+        <div class="desc">Experiencia de coctelería de alta gama.</div>
+        <div class="btrigger">
+          <span class="btxt">Ver Carta</span>
+          <span class="bchevron"></span>
+        </div>
+      </summary>
+      <div class="bbody">
+        <div class="bbody-list">
+          <ul>
+            <li>Gin tonic Importado (Clásico, Berry, Herbal, Fresh)</li>
+            <li>Fernet con Coca</li>
+            <li>Cinzano con Pomelo</li>
+            <li>Cinzano con soda</li>
+            <li>Garibaldi (Campari con naranja)</li>
+            <li>Campari con tónica</li>
+            <li>Caipiroska (Clásica o Frutos rojos)</li>
+            <li>Mojito (Clásico o Frutos rojos)</li>
+            <li>Aperol Spritz</li>
+            <li>Negroni</li>
+            <li>Old fashioned</li>
+            <li>Julepe de Cynar</li>
+            <li>Caipirinha (Clásica o Frutos rojos)</li>
+            <li>Mojito Zero (Clásico o Frutos rojos)</li>
+            <li>Sunset Zero</li>
+            <li>Aguas saborizadas</li>
+            <li>Caipirinha Zero (Clásica o Frutos rojos)</li>
+            <li>Gin Tonic Zero</li>
+            <li>Green Fresh (Agua saborizada)</li>
+          </ul>
+        </div>
+        <div class="bfooter-notes">
+          <em>Para experiencias únicas, lanzamientos, eventos VIP o bodas de alto nivel.</em>
+        </div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- SECCIÓN: UPGRADES (TARJETAS HOMOGÉNEAS) -->
+<div class="sec" id="upgr">
+  <div class="sec-label">Capas de valor</div>
+  <h2>Upgrades opcionales</h2>
+  
+  <div class="upgrades-list">
+    <!-- 01 AR LAYER -->
+    <div class="upgrade-card">
+      <div class="upgrade-content">
+        <div class="upgrade-top">
+          <span class="upgrade-num">01</span>
+          <span class="upgrade-title">AR Layer</span>
+        </div>
+        <p class="upgrade-text">Carta, cócteles, posavasos, stickers o cualquier elemento ampliado mediante el uso de la Realidad Aumentada (AR).</p>
+        <div class="upgrade-tags">
+          <span class="upgrade-tag">Aumenta la fascinación</span>
+          <span class="upgrade-tag">Innova sin fricción operativa</span>
+        </div>
+      </div>
+      <div class="upgrade-img">
+        <img src="imagenes/upgrade-ar.png" onerror="this.src='upgrade-ar.png'" alt="AR Layer">
+      </div>
+    </div>
+
+    <!-- 02 DEEP RITUAL -->
+    <div class="upgrade-card">
+      <div class="upgrade-content">
+        <div class="upgrade-top">
+          <span class="upgrade-num">02</span>
+          <span class="upgrade-title">Deep Ritual</span>
+        </div>
+        <p class="upgrade-text">Módulos de atomización aromática, humo denso y control de iluminación puntual sincronizada con el servicio.</p>
+        <div class="upgrade-tags">
+          <span class="upgrade-tag">Maximiza el valor percibido</span>
+          <span class="upgrade-tag">Diseña momentos memorables</span>
+        </div>
+      </div>
+      <div class="upgrade-img">
+        <img src="imagenes/upgrade-ritual.jpeg" onerror="this.src='imagenes/upgrade-ritual.jpg'; this.onerror=function(){this.src='upgrade-ritual.jpeg';};" alt="Deep Ritual">
+      </div>
+    </div>
+
+    <!-- 03 BLACK AESTHETIC -->
+    <div class="upgrade-card">
+      <div class="upgrade-content">
+        <div class="upgrade-top">
+          <span class="upgrade-num">03</span>
+          <span class="upgrade-title">Black Aesthetic</span>
+        </div>
+        <p class="upgrade-text">Carta digital interactiva, pantallas LED para la exhibición dinámica de los agasajados, destilados y marcas de primer nivel.</p>
+        <div class="upgrade-tags">
+          <span class="upgrade-tag">Amplifica la visibilidad de marca</span>
+          <span class="upgrade-tag">Captura atención orgánica</span>
+        </div>
+      </div>
+      <div class="upgrade-img">
+        <img src="imagenes/upgrade-aesthetic.jpeg" onerror="this.src='imagenes/upgrade-aesthetic.jpg'; this.onerror=function(){this.src='upgrade-aesthetic.jpeg';};" alt="Black Aesthetic">
+      </div>
+    </div>
+
+    <!-- 04 ADVERGAME LAYER -->
+    <div class="upgrade-card">
+      <div class="upgrade-content">
+        <div class="upgrade-top">
+          <span class="upgrade-num">04</span>
+          <span class="upgrade-title">Advergame Layer</span>
+        </div>
+        <p class="upgrade-text">Dinámicas interactivas en pantallas táctiles de 46 pulgadas integradas a la barra para gamificación en eventos sociales o corporativos.</p>
+        <div class="upgrade-tags">
+          <span class="upgrade-tag">Multiplica el engagement</span>
+          <span class="upgrade-tag">Transforma el juego en datos</span>
+        </div>
+      </div>
+      <div class="upgrade-img">
+        <img src="imagenes/upgrade-advergame.png" onerror="this.src='upgrade-advergame.png'" alt="Advergame Layer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN: CONTACTO -->
+<div class="sec" id="cont" style="border-bottom: none;">
+  <div class="sec-label">Contacto</div>
+  <h2>¿Querés destacarte?</h2>
+  <p style="color: #bbb; font-size: 15px;">Contanos tu evento y armamos la propuesta ideal.</p>
+  <div class="cgrid">
+    <a href="https://www.instagram.com/blackcatmix" target="_blank" class="contact-link">
+      <div class="citem">
+        <div class="cl">Instagram</div>
+        <div class="cv">@blackcatmix</div>
+      </div>
+    </a>
+    <a href="https://wa.me/5493415638650" target="_blank" class="contact-link">
+      <div class="citem">
+        <div class="cl">WhatsApp</div>
+        <div class="cv">341 563 8650</div>
+      </div>
+    </a>
+    <a href="mailto:contacto@blackcatmix.com.ar" class="contact-link">
+      <div class="citem">
+        <div class="cl">Mail</div>
+        <div class="cv">contacto@blackcatmix.com.ar</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<footer>© 2025 BlackCat Bebidas &amp; Cocktails — Una experiencia que se recuerda y se comparte</footer>
+
+<!-- SCRIPT DEL CARROUSEL Y ACCIÓN DE BARRAS -->
+<script>
+  var currentSlide = 0;
+  var track = document.getElementById('carouselTrack');
+  var slides = document.querySelectorAll('.carousel-slide');
+  var dots = document.querySelectorAll('.dot');
+  var autoTimer = setInterval(function() { moveSlide(1); }, 4500);
+
+  function renderCarousel() {
+    if (!track) return;
+    track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+    dots.forEach(function(dot, idx) {
+      if (idx === currentSlide) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+
+  function moveSlide(dir) {
+    clearInterval(autoTimer);
+    currentSlide = (currentSlide + dir + slides.length) % slides.length;
+    renderCarousel();
+    autoTimer = setInterval(function() { moveSlide(1); }, 4500);
+  }
+
+  function setSlide(idx) {
+    clearInterval(autoTimer);
+    currentSlide = idx;
+    renderCarousel();
+    autoTimer = setInterval(function() { moveSlide(1); }, 4500);
+  }
+
+  // Actualizar etiqueta del botón de acordeón
+  document.querySelectorAll('details.bcard').forEach(function(item) {
+    item.addEventListener('toggle', function() {
+      var txt = item.querySelector('.btxt');
+      if (txt) {
+        txt.textContent = item.open ? 'Ocultar Carta' : 'Ver Carta';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
