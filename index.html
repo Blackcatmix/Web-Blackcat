@@ -55,7 +55,7 @@
     .carousel-section { max-width: 980px; margin: 3.5rem auto 0; padding: 0 1.5rem; }
     .carousel-container { position: relative; width: 100%; border: 0.5px solid rgba(201, 168, 76, 0.3); border-radius: 4px; overflow: hidden; background: #000; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
     .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); width: 100%; }
-    .carousel-slide { min-width: 100%; position: relative; height: 380px; }
+    .carousel-slide { min-width: 100%; position: relative; height: 420px; }
     .carousel-slide img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.9); }
     .carousel-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem 2rem; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); font-size: 14px; letter-spacing: 1.5px; color: #f0f0f0; text-transform: uppercase; font-weight: 500; }
     .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(10, 10, 10, 0.7); color: #C9A84C; border: 1px solid rgba(201, 168, 76, 0.4); width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; transition: all 0.2s; z-index: 5; }
@@ -111,7 +111,6 @@
     .bcard h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 23px; font-weight: 700; letter-spacing: 3px; margin-bottom: 0.4rem; color: #fff; }
     .bcard .desc { font-size: 13px; color: #C9A84C; line-height: 1.4; font-weight: 500; min-height: 38px; }
     
-    /* Indicador desplegable con chevron */
     .btrigger { 
       display: inline-flex; 
       align-items: center; 
@@ -153,7 +152,7 @@
     .bfooter-notes { padding-top: 1rem; border-top: 0.5px dashed rgba(255,255,255,0.12); }
     .bfooter-notes em { color: #C9A84C; font-size: 12.5px; line-height: 1.5; display: block; font-style: normal; }
 
-    /* UPGRADES (TAMAÑO UNIFORME Y ESTRUCTURADO) */
+    /* UPGRADES (TAMAÑO UNIFORME Y FOTOS VINCULADAS) */
     .upgrades-list { display: flex; flex-direction: column; gap: 1.4rem; }
     .upgrade-card { 
       display: grid; 
@@ -174,7 +173,7 @@
     .upgrade-tag { font-size: 11px; color: #C9A84C; border: 0.5px solid rgba(201, 168, 76, 0.4); padding: 4px 12px; text-transform: uppercase; letter-spacing: 1px; background: rgba(201, 168, 76, 0.05); }
     
     .upgrade-img { position: relative; width: 100%; height: 100%; min-height: 230px; }
-    .upgrade-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s; }
+    .upgrade-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.88); transition: filter 0.3s; }
     .upgrade-card:hover .upgrade-img img { filter: brightness(1); }
 
     /* CONTACTO */
@@ -238,19 +237,16 @@
 <div class="carousel-section">
   <div class="carousel-container">
     <div class="carousel-track" id="carouselTrack">
-      <!-- FOTO 1: Reemplazar el src con tu imagen -->
       <div class="carousel-slide">
-        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80" alt="Cocktelería de autor BlackCat">
+        <img src="carrousel-1.jpeg" alt="Cocktelería de autor BlackCat">
         <div class="carousel-caption">Cocktelería de autor y estética de vanguardia</div>
       </div>
-      <!-- FOTO 2: Reemplazar el src con tu imagen -->
       <div class="carousel-slide">
-        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80" alt="Barras móviles exclusivas">
+        <img src="carrousel-2.jpg" alt="Barras móviles exclusivas">
         <div class="carousel-caption">Barras móviles integrales para eventos memorables</div>
       </div>
-      <!-- FOTO 3: Reemplazar el src con tu imagen -->
       <div class="carousel-slide">
-        <img src="https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&w=1200&q=80" alt="Experiencias interactivas">
+        <img src="carrousel-3.HEIC" alt="Experiencias interactivas">
         <div class="carousel-caption">Tecnología, rituales e impacto sensorial</div>
       </div>
     </div>
@@ -335,80 +331,4 @@
     <div class="bcard" id="card-b3">
       <div class="bhead" onclick="toggleBar('card-b3')">
         <h3>CLÁSICA</h3>
-        <div class="desc">Variedad y sofisticación para un público exigente.</div>
-        <div class="btrigger">
-          <span class="btxt">Ver opciones</span>
-          <span class="bchevron"></span>
-        </div>
-      </div>
-      <div class="bbody">
-        <ul>
-          <li>Gin tonic Nacional (Clásico, Berry, Herbal, Fresh)</li>
-          <li>Fernet con Coca</li>
-          <li>Cinzano con Pomelo</li>
-          <li>Cinzano con soda</li>
-          <li>Garibaldi (Campari con naranja)</li>
-          <li>Campari con tónica</li>
-          <li>Caipiroska</li>
-          <li>Mojito</li>
-          <li>Caipi Zero (Clásica o Frutos rojos)</li>
-          <li>Green Fresh (Agua saborizada)</li>
-        </ul>
-        <div class="bfooter-notes">
-          <em>Pensada para bodas, eventos premium o celebraciones destacadas.</em>
-        </div>
-      </div>
-    </div>
-
-    <!-- CULTO -->
-    <div class="bcard" id="card-b4" style="border-color: rgba(201, 168, 76, 0.45);">
-      <div class="bhead" onclick="toggleBar('card-b4')">
-        <h3>CULTO</h3>
-        <div class="desc">Experiencia de coctelería de alta gama.</div>
-        <div class="btrigger">
-          <span class="btxt">Ver opciones</span>
-          <span class="bchevron"></span>
-        </div>
-      </div>
-      <div class="bbody">
-        <ul>
-          <li>Gin tonic Importado (Clásico, Berry, Herbal, Fresh)</li>
-          <li>Fernet con Coca</li>
-          <li>Cinzano con Pomelo</li>
-          <li>Cinzano con soda</li>
-          <li>Garibaldi (Campari con naranja)</li>
-          <li>Campari con tónica</li>
-          <li>Caipiroska (Clásica o Frutos rojos)</li>
-          <li>Mojito (Clásico o Frutos rojos)</li>
-          <li>Aperol Spritz</li>
-          <li>Negroni</li>
-          <li>Old fashioned</li>
-          <li>Julepe de Cynar</li>
-          <li>Caipirinha (Clásica o Frutos rojos)</li>
-          <li>Mojito Zero (Clásico o Frutos rojos)</li>
-          <li>Sunset Zero</li>
-          <li>Aguas saborizadas</li>
-          <li>Caipirinha Zero (Clásica o Frutos rojos)</li>
-          <li>Gin Tonic Zero</li>
-          <li>Green Fresh (Agua saborizada)</li>
-        </ul>
-        <div class="bfooter-notes">
-          <em>Para experiencias únicas, lanzamientos, eventos VIP o bodas de alto nivel.</em>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SECCIÓN: UPGRADES -->
-<div class="sec" id="upgr">
-  <div class="sec-label">Capas de valor</div>
-  <h2>Upgrades opcionales</h2>
-  
-  <div class="upgrades-list">
-    <!-- 01 AR LAYER -->
-    <div class="upgrade-card">
-      <div class="upgrade-content">
-        <div class="upgrade-top">
-          <span class="upgrade-num">01</span>
-          <span class="upgrade-title">AR Layer</span>
+        <div class="desc">Variedad y sofisticación para un público
