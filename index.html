@@ -81,62 +81,99 @@
     .feat h3 { font-size: 13px; font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem; text-transform: uppercase; color: #fff; }
     .feat p { font-size: 13px; color: #bbb; line-height: 1.6; }
 
-    /* BARRAS (4 COLUMNAS UNIFORMES) */
+    /* BARRAS (ACORDEÓN DINÁMICO) */
     .barras-grid { 
       display: grid; 
       grid-template-columns: repeat(4, 1fr); 
       gap: 1.2rem; 
-      align-items: stretch; 
+      align-items: start; 
     }
     .bcard { 
       border: 0.5px solid rgba(255, 255, 255, 0.15); 
       background: #111; 
       display: flex; 
       flex-direction: column; 
-      transition: all 0.25s ease;
-      border-radius: 2px;
+      transition: all 0.3s ease;
+      border-radius: 3px;
+      overflow: hidden;
     }
-    .bcard:hover { border-color: rgba(201, 168, 76, 0.7); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
-    .bhead { padding: 1.4rem 1.1rem; text-align: center; background: #151515; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
-    .bcard h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 3px; margin-bottom: 0.4rem; color: #fff; }
-    .bcard .desc { font-size: 13px; color: #C9A84C; line-height: 1.4; font-weight: 500; }
+    .bcard:hover { border-color: rgba(201, 168, 76, 0.6); }
+    
+    .bhead { 
+      padding: 1.5rem 1.1rem; 
+      text-align: center; 
+      background: #141414; 
+      cursor: pointer; 
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .bhead:hover { background: #191919; }
+    .bcard h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 23px; font-weight: 700; letter-spacing: 3px; margin-bottom: 0.4rem; color: #fff; }
+    .bcard .desc { font-size: 13px; color: #C9A84C; line-height: 1.4; font-weight: 500; min-height: 38px; }
+    
+    /* Indicador desplegable con chevron */
+    .btrigger { 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 6px; 
+      margin-top: 1rem; 
+      font-size: 11px; 
+      letter-spacing: 1.5px; 
+      text-transform: uppercase; 
+      color: #999; 
+      border: 0.5px solid rgba(255,255,255,0.15); 
+      padding: 5px 12px; 
+      border-radius: 20px; 
+      transition: all 0.25s; 
+    }
+    .bhead:hover .btrigger { color: #C9A84C; border-color: rgba(201, 168, 76, 0.4); }
+    .bchevron { width: 8px; height: 8px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); transition: transform 0.35s ease; margin-bottom: 2px; }
     
     .bbody { 
-      padding: 1.4rem 1.2rem; 
-      background: #0e0e0e; 
+      max-height: 0; 
+      overflow: hidden; 
+      transition: max-height 0.45s cubic-bezier(0, 1, 0, 1), padding 0.3s ease; 
+      background: #0d0d0d; 
       font-size: 13.5px; 
       color: #dedede; 
       line-height: 1.65; 
-      flex-grow: 1; 
-      display: flex; 
-      flex-direction: column; 
-      justify-content: space-between; 
+      padding: 0 1.2rem;
     }
-    .bbody ul { padding-left: 1.1rem; margin-bottom: 1.5rem; }
+    .bcard.open .bbody { 
+      max-height: 1200px; 
+      transition: max-height 0.6s ease-in-out, padding 0.3s ease; 
+      padding: 1.4rem 1.2rem; 
+      border-top: 0.5px solid rgba(255,255,255,0.08); 
+    }
+    .bcard.open .bchevron { transform: rotate(-135deg); margin-bottom: -2px; }
+    .bcard.open .btrigger { color: #C9A84C; border-color: #C9A84C; }
+    
+    .bbody ul { padding-left: 1.1rem; margin-bottom: 1.2rem; }
     .bbody ul li { margin-bottom: 7px; list-style-type: disc; }
-    .bfooter-notes { margin-top: auto; padding-top: 1rem; border-top: 0.5px dashed rgba(255,255,255,0.12); }
+    .bfooter-notes { padding-top: 1rem; border-top: 0.5px dashed rgba(255,255,255,0.12); }
     .bfooter-notes em { color: #C9A84C; font-size: 12.5px; line-height: 1.5; display: block; font-style: normal; }
-    .bfooter-notes em + em { margin-top: 8px; }
 
-    /* UPGRADES CON IMAGEN LATERAL */
+    /* UPGRADES (TAMAÑO UNIFORME Y ESTRUCTURADO) */
     .upgrades-list { display: flex; flex-direction: column; gap: 1.4rem; }
     .upgrade-card { 
       display: grid; 
-      grid-template-columns: 1fr 280px; 
+      grid-template-columns: 1fr 300px; 
+      min-height: 230px; 
       border: 0.5px solid rgba(255, 255, 255, 0.15); 
       background: #111; 
       overflow: hidden; 
       transition: border-color 0.25s, transform 0.25s; 
     }
     .upgrade-card:hover { border-color: rgba(201, 168, 76, 0.6); transform: translateY(-2px); }
-    .upgrade-content { padding: 1.8rem 2rem; display: flex; flex-direction: column; justify-content: center; }
+    .upgrade-content { padding: 2rem 2.2rem; display: flex; flex-direction: column; justify-content: center; }
     .upgrade-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem; }
     .upgrade-num { font-size: 13px; color: #C9A84C; font-weight: 700; letter-spacing: 2px; }
-    .upgrade-title { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #fff; }
+    .upgrade-title { font-family: 'Barlow Condensed', sans-serif; font-size: 25px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #fff; }
     .upgrade-text { font-size: 14.5px; color: #cfcfcf; line-height: 1.7; margin-bottom: 1.2rem; }
     .upgrade-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .upgrade-tag { font-size: 11px; color: #C9A84C; border: 0.5px solid rgba(201, 168, 76, 0.4); padding: 4px 12px; text-transform: uppercase; letter-spacing: 1px; background: rgba(201, 168, 76, 0.05); }
-    .upgrade-img { position: relative; width: 100%; height: 100%; min-height: 200px; }
+    
+    .upgrade-img { position: relative; width: 100%; height: 100%; min-height: 230px; }
     .upgrade-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s; }
     .upgrade-card:hover .upgrade-img img { filter: brightness(1); }
 
@@ -147,7 +184,7 @@
     .citem { border: 0.5px solid rgba(255, 255, 255, 0.15); padding: 1.5rem; background: #111; height: 100%; transition: border-color 0.2s; }
     .citem:hover { border-color: rgba(201, 168, 76, 0.6); }
     .citem .cl { font-size: 11px; color: #C9A84C; letter-spacing: 2px; margin-bottom: 0.5rem; text-transform: uppercase; font-weight: 600; }
-    .citem .cv { font-size: 15px; color: #eee; font-weight: 500; }
+    .citem .cv { font-size: 15px; color: #eee; font-weight: 500; word-break: break-all; }
 
     footer { text-align: center; padding: 2.5rem 1rem; font-size: 12px; color: #777; letter-spacing: 1.5px; text-transform: uppercase; }
 
@@ -155,7 +192,7 @@
     @media (max-width: 900px) {
       .barras-grid { grid-template-columns: repeat(2, 1fr); }
       .upgrade-card { grid-template-columns: 1fr; }
-      .upgrade-img { height: 200px; }
+      .upgrade-img { height: 210px; min-height: 210px; }
     }
     @media (max-width: 600px) {
       nav { flex-direction: column; gap: 1rem; padding: 1rem; }
@@ -197,18 +234,21 @@
   </div>
 </div>
 
-<!-- CAROUSEL DE IMÁGENES -->
+<!-- CARROUSEL DE IMÁGENES -->
 <div class="carousel-section">
   <div class="carousel-container">
     <div class="carousel-track" id="carouselTrack">
+      <!-- FOTO 1: Reemplazar el src con tu imagen -->
       <div class="carousel-slide">
         <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80" alt="Cocktelería de autor BlackCat">
         <div class="carousel-caption">Cocktelería de autor y estética de vanguardia</div>
       </div>
+      <!-- FOTO 2: Reemplazar el src con tu imagen -->
       <div class="carousel-slide">
         <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80" alt="Barras móviles exclusivas">
         <div class="carousel-caption">Barras móviles integrales para eventos memorables</div>
       </div>
+      <!-- FOTO 3: Reemplazar el src con tu imagen -->
       <div class="carousel-slide">
         <img src="https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&w=1200&q=80" alt="Experiencias interactivas">
         <div class="carousel-caption">Tecnología, rituales e impacto sensorial</div>
@@ -237,24 +277,28 @@
   </div>
 </div>
 
-<!-- SECCIÓN: BARRAS (AHORA PRIMERO) -->
+<!-- SECCIÓN: BARRAS (ACORDEÓN DESPLEGABLE) -->
 <div class="sec" id="barr">
   <div class="sec-label">Nuestras propuestas</div>
   <h2>Elegí tu barra</h2>
   
   <div class="barras-grid">
     <!-- ZERO -->
-    <div class="bcard">
-      <div class="bhead">
+    <div class="bcard" id="card-b1">
+      <div class="bhead" onclick="toggleBar('card-b1')">
         <h3>ZERO</h3>
         <div class="desc">Cien por ciento sabor con cero alcohol.</div>
+        <div class="btrigger">
+          <span class="btxt">Ver opciones</span>
+          <span class="bchevron"></span>
+        </div>
       </div>
       <div class="bbody">
         <ul>
-          <li>Mojito Zero (Clásico o con Frutos rojos)</li>
+          <li>Mojito Zero (Clásico o Frutos rojos)</li>
           <li>Sunset Zero</li>
           <li>Aguas saborizadas</li>
-          <li>Caipirinha Zero (Clásica o con Frutos rojos)</li>
+          <li>Caipirinha Zero (Clásica o Frutos rojos)</li>
           <li>Gin Tonic Zero</li>
           <li>Green Fresh (Agua saborizada)</li>
         </ul>
@@ -265,10 +309,14 @@
     </div>
 
     <!-- ESENCIAL -->
-    <div class="bcard">
-      <div class="bhead">
+    <div class="bcard" id="card-b2">
+      <div class="bhead" onclick="toggleBar('card-b2')">
         <h3>ESENCIAL</h3>
         <div class="desc">Elegancia y carácter de la coctelería esencial.</div>
+        <div class="btrigger">
+          <span class="btxt">Ver opciones</span>
+          <span class="bchevron"></span>
+        </div>
       </div>
       <div class="bbody">
         <ul>
@@ -284,10 +332,14 @@
     </div>
 
     <!-- CLÁSICA -->
-    <div class="bcard">
-      <div class="bhead">
+    <div class="bcard" id="card-b3">
+      <div class="bhead" onclick="toggleBar('card-b3')">
         <h3>CLÁSICA</h3>
         <div class="desc">Variedad y sofisticación para un público exigente.</div>
+        <div class="btrigger">
+          <span class="btxt">Ver opciones</span>
+          <span class="bchevron"></span>
+        </div>
       </div>
       <div class="bbody">
         <ul>
@@ -299,7 +351,7 @@
           <li>Campari con tónica</li>
           <li>Caipiroska</li>
           <li>Mojito</li>
-          <li>Caipi Zero (Clásica o con frutos rojos)</li>
+          <li>Caipi Zero (Clásica o Frutos rojos)</li>
           <li>Green Fresh (Agua saborizada)</li>
         </ul>
         <div class="bfooter-notes">
@@ -308,11 +360,15 @@
       </div>
     </div>
 
-    <!-- CULTO (TEXTO COMPLETO RESUELTO) -->
-    <div class="bcard" style="border-color: rgba(201, 168, 76, 0.45);">
-      <div class="bhead">
+    <!-- CULTO -->
+    <div class="bcard" id="card-b4" style="border-color: rgba(201, 168, 76, 0.45);">
+      <div class="bhead" onclick="toggleBar('card-b4')">
         <h3>CULTO</h3>
         <div class="desc">Experiencia de coctelería de alta gama.</div>
+        <div class="btrigger">
+          <span class="btxt">Ver opciones</span>
+          <span class="bchevron"></span>
+        </div>
       </div>
       <div class="bbody">
         <ul>
@@ -322,29 +378,29 @@
           <li>Cinzano con soda</li>
           <li>Garibaldi (Campari con naranja)</li>
           <li>Campari con tónica</li>
-          <li>Caipiroska (Clásica o con Frutos rojos)</li>
-          <li>Mojito (Clásico o con Frutos rojos)</li>
+          <li>Caipiroska (Clásica o Frutos rojos)</li>
+          <li>Mojito (Clásico o Frutos rojos)</li>
           <li>Aperol Spritz</li>
           <li>Negroni</li>
           <li>Old fashioned</li>
           <li>Julepe de Cynar</li>
           <li>Caipirinha (Clásica o Frutos rojos)</li>
-          <li>Mojito Zero (Clásico o con Frutos rojos)</li>
+          <li>Mojito Zero (Clásico o Frutos rojos)</li>
           <li>Sunset Zero</li>
           <li>Aguas saborizadas</li>
-          <li>Caipirinha Zero (Clásica o con Frutos rojos)</li>
+          <li>Caipirinha Zero (Clásica o Frutos rojos)</li>
           <li>Gin Tonic Zero</li>
           <li>Green Fresh (Agua saborizada)</li>
         </ul>
         <div class="bfooter-notes">
-         <em>Para experiencias únicas, lanzamientos, eventos VIP o bodas de alto nivel.</em>
+          <em>Para experiencias únicas, lanzamientos, eventos VIP o bodas de alto nivel.</em>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SECCIÓN: UPGRADES CON IMAGEN -->
+<!-- SECCIÓN: UPGRADES -->
 <div class="sec" id="upgr">
   <div class="sec-label">Capas de valor</div>
   <h2>Upgrades opcionales</h2>
@@ -356,132 +412,3 @@
         <div class="upgrade-top">
           <span class="upgrade-num">01</span>
           <span class="upgrade-title">AR Layer</span>
-        </div>
-        <p class="upgrade-text">Carta, cócteles, posavasos, stickers o cualquier elemento ampliado mediante el uso de la Realidad Aumentada (AR).</p>
-        <div class="upgrade-tags">
-          <span class="upgrade-tag">Aumenta la fascinación</span>
-          <span class="upgrade-tag">Innova sin fricción operativa</span>
-        </div>
-      </div>
-      <div class="upgrade-img">
-        <img src="https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?auto=format&fit=crop&w=600&q=80" alt="AR Layer">
-      </div>
-    </div>
-
-    <!-- 02 DEEP RITUAL -->
-    <div class="upgrade-card">
-      <div class="upgrade-content">
-        <div class="upgrade-top">
-          <span class="upgrade-num">02</span>
-          <span class="upgrade-title">Deep Ritual</span>
-        </div>
-        <p class="upgrade-text">Módulos de atomización aromática, humo denso y control de iluminación puntual sincronizada con el servicio.</p>
-        <div class="upgrade-tags">
-          <span class="upgrade-tag">Maximiza el valor percibido</span>
-          <span class="upgrade-tag">Diseña momentos memorables</span>
-        </div>
-      </div>
-      <div class="upgrade-img">
-        <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=600&q=80" alt="Deep Ritual">
-      </div>
-    </div>
-
-    <!-- 03 BLACK AESTHETIC -->
-    <div class="upgrade-card">
-      <div class="upgrade-content">
-        <div class="upgrade-top">
-          <span class="upgrade-num">03</span>
-          <span class="upgrade-title">Black Aesthetic</span>
-        </div>
-        <p class="upgrade-text">Carta digital interactiva, pantallas LED para la exhibición dinámica de los agasajados, destilados y marcas de primer nivel.</p>
-        <div class="upgrade-tags">
-          <span class="upgrade-tag">Amplifica la visibilidad de marca</span>
-          <span class="upgrade-tag">Captura atención orgánica</span>
-        </div>
-      </div>
-      <div class="upgrade-img">
-        <img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=600&q=80" alt="Black Aesthetic">
-      </div>
-    </div>
-
-    <!-- 04 ADVERGAME LAYER -->
-    <div class="upgrade-card">
-      <div class="upgrade-content">
-        <div class="upgrade-top">
-          <span class="upgrade-num">04</span>
-          <span class="upgrade-title">Advergame Layer</span>
-        </div>
-        <p class="upgrade-text">Dinámicas interactivas en pantallas táctiles de 46 pulgadas integradas a la barra para gamificación en eventos sociales o corporativos.</p>
-        <div class="upgrade-tags">
-          <span class="upgrade-tag">Multiplica el engagement</span>
-          <span class="upgrade-tag">Transforma el juego en datos</span>
-        </div>
-      </div>
-      <div class="upgrade-img">
-        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80" alt="Advergame Layer">
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SECCIÓN: CONTACTO (SIN LÍNEA AMARILLA HUÉRFANA NI ESPACIO RARO) -->
-<div class="sec" id="cont" style="border-bottom: none;">
-  <div class="sec-label">Contacto</div>
-  <h2>¿Querés destacarte?</h2>
-  <p style="color: #bbb; font-size: 15px;">Contanos tu evento y armamos la propuesta ideal.</p>
-  <div class="cgrid">
-    <a href="https://www.instagram.com/blackcatmix" target="_blank" class="contact-link">
-      <div class="citem">
-        <div class="cl">Instagram</div>
-        <div class="cv">@blackcatmix</div>
-      </div>
-    </a>
-    <a href="https://wa.me/5493415638650" target="_blank" class="contact-link">
-      <div class="citem">
-        <div class="cl">WhatsApp</div>
-        <div class="cv">341 563 8650</div>
-      </div>
-    </a>
-    <a href="mailto:contacto@blackcatmix.com.ar" class="contact-link">
-      <div class="citem">
-        <div class="cl">Mail</div>
-        <div class="cv">contacto@blackcatmix.com.ar</div>
-      </div>
-    </a>
-  </div>
-</div>
-
-<footer>© 2025 BlackCat Bebidas &amp; Cocktails — Una experiencia que se recuerda y se comparte</footer>
-
-<!-- SCRIPT DEL CARROUSEL -->
-<script>
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.carousel-slide');
-  const track = document.getElementById('carouselTrack');
-  const dots = document.querySelectorAll('.dot');
-  let autoSlideTimer = setInterval(() => moveSlide(1), 5000);
-
-  function updateCarousel() {
-    track.style.transform = `translateX(-${currentSlide * 100}%)`;
-    dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentSlide);
-    });
-  }
-
-  function moveSlide(direction) {
-    clearInterval(autoSlideTimer);
-    currentSlide = (currentSlide + direction + slides.length) % slides.length;
-    updateCarousel();
-    autoSlideTimer = setInterval(() => moveSlide(1), 5000);
-  }
-
-  function setSlide(index) {
-    clearInterval(autoSlideTimer);
-    currentSlide = index;
-    updateCarousel();
-    autoSlideTimer = setInterval(() => moveSlide(1), 5000);
-  }
-</script>
-
-</body>
-</html>
