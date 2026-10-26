@@ -52,9 +52,9 @@
 
     /* CARROUSEL */
     .carousel-section { max-width: 980px; margin: 3.5rem auto 0; padding: 0 1.5rem; }
-    .carousel-container { position: relative; width: 100%; border: 0.5px solid rgba(201, 168, 76, 0.3); border-radius: 4px; overflow: hidden; background: #000; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+    .carousel-container { position: relative; width: 100%; border: 0.5px solid rgba(201, 168, 76, 0.3); border-radius: 4px; overflow: hidden; background: #111; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
     .carousel-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
-    .carousel-slide { min-width: 100%; width: 100%; position: relative; height: 440px; flex-shrink: 0; }
+    .carousel-slide { min-width: 100%; width: 100%; position: relative; height: 440px; flex-shrink: 0; background: #0a0a0a; }
     .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .carousel-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.8rem 2rem 2.8rem; background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 60%, transparent 100%); font-size: 14px; letter-spacing: 1.5px; color: #f0f0f0; text-transform: uppercase; font-weight: 600; text-align: center; }
     .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(10, 10, 10, 0.8); color: #C9A84C; border: 1px solid rgba(201, 168, 76, 0.5); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; transition: all 0.2s; z-index: 10; user-select: none; }
@@ -80,12 +80,12 @@
     .feat h3 { font-size: 13px; font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem; text-transform: uppercase; color: #fff; }
     .feat p { font-size: 13px; color: #bbb; line-height: 1.6; }
 
-    /* BARRAS: 4 COLUMNAS REALES NATIVAS */
+    /* BARRAS: ALINEACIÓN Y ALTURA HOMOGÉNEA */
     .barras-grid { 
       display: grid; 
       grid-template-columns: repeat(4, 1fr); 
       gap: 1.2rem; 
-      align-items: start; 
+      align-items: stretch; 
       width: 100%;
     }
     details.bcard { 
@@ -93,11 +93,11 @@
       background: #111; 
       border-radius: 3px;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
       transition: border-color 0.25s;
     }
-    details.bcard[open] {
-      border-color: rgba(201, 168, 76, 0.7);
-    }
+    details.bcard[open] { border-color: rgba(201, 168, 76, 0.7); }
     details.bcard:hover { border-color: rgba(201, 168, 76, 0.6); }
     
     summary.bhead { 
@@ -134,7 +134,6 @@
     
     details.bcard[open] .bchevron { transform: rotate(-135deg); margin-bottom: -2px; }
     details.bcard[open] .btrigger { color: #C9A84C; border-color: #C9A84C; background: rgba(201,168,76,0.08); }
-    details.bcard[open] .btxt { content: "Ocultar Carta"; }
     
     .bbody { 
       background: #0d0d0d; 
@@ -143,34 +142,47 @@
       line-height: 1.65; 
       padding: 1.4rem 1.2rem;
       border-top: 0.5px solid rgba(255,255,255,0.08); 
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
-    .bbody ul { padding-left: 1.1rem; margin-bottom: 1.2rem; }
+    .bbody-list {
+      max-height: 320px;
+      overflow-y: auto;
+      padding-right: 6px;
+      margin-bottom: 1.2rem;
+    }
+    .bbody-list::-webkit-scrollbar { width: 4px; }
+    .bbody-list::-webkit-scrollbar-thumb { background: rgba(201, 168, 76, 0.4); border-radius: 2px; }
+    .bbody ul { padding-left: 1.1rem; }
     .bbody ul li { margin-bottom: 7px; list-style-type: disc; }
-    .bfooter-notes { padding-top: 1rem; border-top: 0.5px dashed rgba(255,255,255,0.12); }
+    .bfooter-notes { margin-top: auto; padding-top: 1rem; border-top: 0.5px dashed rgba(255,255,255,0.12); }
     .bfooter-notes em { color: #C9A84C; font-size: 12.5px; line-height: 1.5; display: block; font-style: normal; }
 
-    /* UPGRADES CON IMÁGENES */
+    /* UPGRADES CON TAMAÑO EXACTO Y NIVELADO */
     .upgrades-list { display: flex; flex-direction: column; gap: 1.4rem; }
     .upgrade-card { 
       display: grid; 
-      grid-template-columns: 1fr 300px; 
-      min-height: 230px; 
+      grid-template-columns: 1fr 320px; 
+      height: 250px; 
+      max-height: 250px;
       border: 0.5px solid rgba(255, 255, 255, 0.15); 
       background: #111; 
       overflow: hidden; 
+      border-radius: 3px;
       transition: border-color 0.25s, transform 0.25s; 
     }
     .upgrade-card:hover { border-color: rgba(201, 168, 76, 0.6); transform: translateY(-2px); }
-    .upgrade-content { padding: 2rem 2.2rem; display: flex; flex-direction: column; justify-content: center; }
-    .upgrade-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem; }
+    .upgrade-content { padding: 1.8rem 2.2rem; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+    .upgrade-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.6rem; }
     .upgrade-num { font-size: 13px; color: #C9A84C; font-weight: 700; letter-spacing: 2px; }
     .upgrade-title { font-family: 'Barlow Condensed', sans-serif; font-size: 25px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #fff; }
-    .upgrade-text { font-size: 14.5px; color: #cfcfcf; line-height: 1.7; margin-bottom: 1.2rem; }
+    .upgrade-text { font-size: 14.5px; color: #cfcfcf; line-height: 1.6; margin-bottom: 1rem; }
     .upgrade-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .upgrade-tag { font-size: 11px; color: #C9A84C; border: 0.5px solid rgba(201, 168, 76, 0.4); padding: 4px 12px; text-transform: uppercase; letter-spacing: 1px; background: rgba(201, 168, 76, 0.05); }
     
-    .upgrade-img { position: relative; width: 100%; height: 100%; min-height: 230px; background: #1a1a1a; }
-    .upgrade-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.9); transition: filter 0.3s; }
+    .upgrade-img { width: 100%; height: 250px; max-height: 250px; background: #161616; overflow: hidden; }
+    .upgrade-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; filter: brightness(0.9); transition: filter 0.3s; }
     .upgrade-card:hover .upgrade-img img { filter: brightness(1); }
 
     /* CONTACTO */
@@ -187,8 +199,8 @@
     /* RESPONSIVE */
     @media (max-width: 950px) {
       .barras-grid { grid-template-columns: repeat(2, 1fr); }
-      .upgrade-card { grid-template-columns: 1fr; }
-      .upgrade-img { height: 210px; min-height: 210px; }
+      .upgrade-card { grid-template-columns: 1fr; height: auto; max-height: none; }
+      .upgrade-img { height: 210px; max-height: 210px; }
     }
     @media (max-width: 600px) {
       nav { flex-direction: column; gap: 1rem; padding: 1rem; }
@@ -235,15 +247,15 @@
   <div class="carousel-container">
     <div class="carousel-track" id="carouselTrack">
       <div class="carousel-slide">
-        <img src="./imagenes/carrousel-1.jpeg" alt="Cocktelería de autor BlackCat">
+        <img src="imagenes/carrousel-1.jpeg" onerror="this.src='carrousel-1.jpeg'" alt="Cocktelería de autor BlackCat">
         <div class="carousel-caption">Cocktelería de autor y estética de vanguardia</div>
       </div>
       <div class="carousel-slide">
-        <img src="./imagenes/carrousel-2.jpg" alt="Barras móviles exclusivas">
+        <img src="imagenes/carrousel-2.jpg" onerror="this.src='carrousel-2.jpg'" alt="Barras móviles exclusivas">
         <div class="carousel-caption">Barras móviles integrales para eventos memorables</div>
       </div>
       <div class="carousel-slide">
-        <img src="./imagenes/carrousel-3.jpg" alt="Experiencias interactivas">
+        <img src="imagenes/carrousel-3.jpg" onerror="this.src='carrousel-3.jpg'" alt="Experiencias interactivas">
         <div class="carousel-caption">Tecnología, rituales e impacto sensorial</div>
       </div>
     </div>
@@ -270,7 +282,7 @@
   </div>
 </div>
 
-<!-- SECCIÓN: BARRAS (4 BARRAS COMPLETAS: ZERO, ESENCIAL, CLÁSICA, CULTO) -->
+<!-- SECCIÓN: BARRAS (4 BARRAS NIVELADAS) -->
 <div class="sec" id="barr">
   <div class="sec-label">Nuestras propuestas</div>
   <h2>Elegí tu barra</h2>
@@ -287,14 +299,16 @@
         </div>
       </summary>
       <div class="bbody">
-        <ul>
-          <li>Mojito Zero (Clásico o Frutos rojos)</li>
-          <li>Sunset Zero</li>
-          <li>Aguas saborizadas</li>
-          <li>Caipirinha Zero (Clásica o Frutos rojos)</li>
-          <li>Gin Tonic Zero</li>
-          <li>Green Fresh (Agua saborizada)</li>
-        </ul>
+        <div class="bbody-list">
+          <ul>
+            <li>Mojito Zero (Clásico o Frutos rojos)</li>
+            <li>Sunset Zero</li>
+            <li>Aguas saborizadas</li>
+            <li>Caipirinha Zero (Clásica o Frutos rojos)</li>
+            <li>Gin Tonic Zero</li>
+            <li>Green Fresh (Agua saborizada)</li>
+          </ul>
+        </div>
         <div class="bfooter-notes">
           <em>Ideal para eventos familiares, brunchs, adolescentes o recepciones de día.</em>
         </div>
@@ -312,12 +326,14 @@
         </div>
       </summary>
       <div class="bbody">
-        <ul>
-          <li>Gin tonic Nacional (Clásico, Berry, Herbal, Fresh)</li>
-          <li>Fernet con Coca</li>
-          <li>Cinzano con Pomelo</li>
-          <li>Cinzano con soda</li>
-        </ul>
+        <div class="bbody-list">
+          <ul>
+            <li>Gin tonic Nacional (Clásico, Berry, Herbal, Fresh)</li>
+            <li>Fernet con Coca</li>
+            <li>Cinzano con Pomelo</li>
+            <li>Cinzano con soda</li>
+          </ul>
+        </div>
         <div class="bfooter-notes">
           <em>Perfecta para eventos relajados, cumpleaños y celebraciones informales.</em>
         </div>
@@ -335,18 +351,20 @@
         </div>
       </summary>
       <div class="bbody">
-        <ul>
-          <li>Gin tonic Nacional (Clásico, Berry, Herbal, Fresh)</li>
-          <li>Fernet con Coca</li>
-          <li>Cinzano con Pomelo</li>
-          <li>Cinzano con soda</li>
-          <li>Garibaldi (Campari con naranja)</li>
-          <li>Campari con tónica</li>
-          <li>Caipiroska</li>
-          <li>Mojito</li>
-          <li>Caipi Zero (Clásica o Frutos rojos)</li>
-          <li>Green Fresh (Agua saborizada)</li>
-        </ul>
+        <div class="bbody-list">
+          <ul>
+            <li>Gin tonic Nacional (Clásico, Berry, Herbal, Fresh)</li>
+            <li>Fernet con Coca</li>
+            <li>Cinzano con Pomelo</li>
+            <li>Cinzano con soda</li>
+            <li>Garibaldi (Campari con naranja)</li>
+            <li>Campari con tónica</li>
+            <li>Caipiroska</li>
+            <li>Mojito</li>
+            <li>Caipi Zero (Clásica o Frutos rojos)</li>
+            <li>Green Fresh (Agua saborizada)</li>
+          </ul>
+        </div>
         <div class="bfooter-notes">
           <em>Pensada para bodas, eventos premium o celebraciones destacadas.</em>
         </div>
@@ -364,27 +382,29 @@
         </div>
       </summary>
       <div class="bbody">
-        <ul>
-          <li>Gin tonic Importado (Clásico, Berry, Herbal, Fresh)</li>
-          <li>Fernet con Coca</li>
-          <li>Cinzano con Pomelo</li>
-          <li>Cinzano con soda</li>
-          <li>Garibaldi (Campari con naranja)</li>
-          <li>Campari con tónica</li>
-          <li>Caipiroska (Clásica o Frutos rojos)</li>
-          <li>Mojito (Clásico o Frutos rojos)</li>
-          <li>Aperol Spritz</li>
-          <li>Negroni</li>
-          <li>Old fashioned</li>
-          <li>Julepe de Cynar</li>
-          <li>Caipirinha (Clásica o Frutos rojos)</li>
-          <li>Mojito Zero (Clásico o Frutos rojos)</li>
-          <li>Sunset Zero</li>
-          <li>Aguas saborizadas</li>
-          <li>Caipirinha Zero (Clásica o Frutos rojos)</li>
-          <li>Gin Tonic Zero</li>
-          <li>Green Fresh (Agua saborizada)</li>
-        </ul>
+        <div class="bbody-list">
+          <ul>
+            <li>Gin tonic Importado (Clásico, Berry, Herbal, Fresh)</li>
+            <li>Fernet con Coca</li>
+            <li>Cinzano con Pomelo</li>
+            <li>Cinzano con soda</li>
+            <li>Garibaldi (Campari con naranja)</li>
+            <li>Campari con tónica</li>
+            <li>Caipiroska (Clásica o Frutos rojos)</li>
+            <li>Mojito (Clásico o Frutos rojos)</li>
+            <li>Aperol Spritz</li>
+            <li>Negroni</li>
+            <li>Old fashioned</li>
+            <li>Julepe de Cynar</li>
+            <li>Caipirinha (Clásica o Frutos rojos)</li>
+            <li>Mojito Zero (Clásico o Frutos rojos)</li>
+            <li>Sunset Zero</li>
+            <li>Aguas saborizadas</li>
+            <li>Caipirinha Zero (Clásica o Frutos rojos)</li>
+            <li>Gin Tonic Zero</li>
+            <li>Green Fresh (Agua saborizada)</li>
+          </ul>
+        </div>
         <div class="bfooter-notes">
           <em>Para experiencias únicas, lanzamientos, eventos VIP o bodas de alto nivel.</em>
         </div>
@@ -393,7 +413,7 @@
   </div>
 </div>
 
-<!-- SECCIÓN: UPGRADES -->
+<!-- SECCIÓN: UPGRADES (TARJETAS HOMOGÉNEAS) -->
 <div class="sec" id="upgr">
   <div class="sec-label">Capas de valor</div>
   <h2>Upgrades opcionales</h2>
@@ -413,7 +433,7 @@
         </div>
       </div>
       <div class="upgrade-img">
-        <img src="./imagenes/upgrade-ar.png" alt="AR Layer">
+        <img src="imagenes/upgrade-ar.png" onerror="this.src='upgrade-ar.png'" alt="AR Layer">
       </div>
     </div>
 
@@ -431,7 +451,7 @@
         </div>
       </div>
       <div class="upgrade-img">
-        <img src="./imagenes/upgrade-ritual.jpeg" alt="Deep Ritual">
+        <img src="imagenes/upgrade-ritual.jpeg" onerror="this.src='imagenes/upgrade-ritual.jpg'; this.onerror=function(){this.src='upgrade-ritual.jpeg';};" alt="Deep Ritual">
       </div>
     </div>
 
@@ -449,7 +469,7 @@
         </div>
       </div>
       <div class="upgrade-img">
-        <img src="./imagenes/upgrade-aesthetic.jpeg" alt="Black Aesthetic">
+        <img src="imagenes/upgrade-aesthetic.jpeg" onerror="this.src='imagenes/upgrade-aesthetic.jpg'; this.onerror=function(){this.src='upgrade-aesthetic.jpeg';};" alt="Black Aesthetic">
       </div>
     </div>
 
@@ -467,7 +487,7 @@
         </div>
       </div>
       <div class="upgrade-img">
-        <img src="./imagenes/upgrade-advergame.png" alt="Advergame Layer">
+        <img src="imagenes/upgrade-advergame.png" onerror="this.src='upgrade-advergame.png'" alt="Advergame Layer">
       </div>
     </div>
   </div>
@@ -502,7 +522,7 @@
 
 <footer>© 2025 BlackCat Bebidas &amp; Cocktails — Una experiencia que se recuerda y se comparte</footer>
 
-<!-- SCRIPT DEL CARROUSEL -->
+<!-- SCRIPT DEL CARROUSEL Y ACCIÓN DE BARRAS -->
 <script>
   var currentSlide = 0;
   var track = document.getElementById('carouselTrack');
@@ -536,7 +556,7 @@
     autoTimer = setInterval(function() { moveSlide(1); }, 4500);
   }
 
-  // Cambio de texto dinámico en el botón al abrir/cerrar detalles
+  // Actualizar etiqueta del botón de acordeón
   document.querySelectorAll('details.bcard').forEach(function(item) {
     item.addEventListener('toggle', function() {
       var txt = item.querySelector('.btxt');
