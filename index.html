@@ -65,7 +65,7 @@
     .dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, 0.35); cursor: pointer; transition: all 0.25s; }
     .dot.active { background: #C9A84C; width: 24px; border-radius: 5px; }
 
-    /* SECCIONES */
+    /* SECCIONES COMUNES */
     .sec { padding: 4.5rem 2rem; border-bottom: 0.5px solid rgba(255, 255, 255, 0.12); max-width: 1100px; margin: 0 auto; }
     .sec-label { font-size: 11px; letter-spacing: 4px; color: #C9A84C; margin-bottom: 0.7rem; text-transform: uppercase; font-weight: 600; }
     .sec h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 38px; font-weight: 700; letter-spacing: 2px; margin-bottom: 2rem; text-transform: uppercase; }
@@ -80,7 +80,7 @@
     .feat h3 { font-size: 13px; font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem; text-transform: uppercase; color: #fff; }
     .feat p { font-size: 13px; color: #bbb; line-height: 1.6; }
 
-    /* BARRAS: ALINEACIÓN Y ALTURA HOMOGÉNEA */
+    /* BARRAS (SIN SCROLL, ALTURA UNIFORME BASADA EN CULTO) */
     .barras-grid { 
       display: grid; 
       grid-template-columns: repeat(4, 1fr); 
@@ -140,26 +140,19 @@
       font-size: 13.5px; 
       color: #dedede; 
       line-height: 1.65; 
-      padding: 1.4rem 1.2rem;
+      padding: 1.5rem 1.2rem;
       border-top: 0.5px solid rgba(255,255,255,0.08); 
       display: flex;
       flex-direction: column;
       flex-grow: 1;
+      justify-content: space-between;
     }
-    .bbody-list {
-      max-height: 320px;
-      overflow-y: auto;
-      padding-right: 6px;
-      margin-bottom: 1.2rem;
-    }
-    .bbody-list::-webkit-scrollbar { width: 4px; }
-    .bbody-list::-webkit-scrollbar-thumb { background: rgba(201, 168, 76, 0.4); border-radius: 2px; }
-    .bbody ul { padding-left: 1.1rem; }
+    .bbody ul { padding-left: 1.1rem; margin-bottom: 1.8rem; }
     .bbody ul li { margin-bottom: 7px; list-style-type: disc; }
-    .bfooter-notes { margin-top: auto; padding-top: 1rem; border-top: 0.5px dashed rgba(255,255,255,0.12); }
+    .bfooter-notes { margin-top: auto; padding-top: 1.2rem; border-top: 0.5px dashed rgba(255,255,255,0.12); }
     .bfooter-notes em { color: #C9A84C; font-size: 12.5px; line-height: 1.5; display: block; font-style: normal; }
 
-    /* UPGRADES CON TAMAÑO EXACTO Y NIVELADO */
+    /* UPGRADES (ALTURA BLOQUEADA A 250px) */
     .upgrades-list { display: flex; flex-direction: column; gap: 1.4rem; }
     .upgrade-card { 
       display: grid; 
@@ -247,15 +240,15 @@
   <div class="carousel-container">
     <div class="carousel-track" id="carouselTrack">
       <div class="carousel-slide">
-        <img src="imagenes/carrousel-1.jpeg" onerror="this.src='carrousel-1.jpeg'" alt="Cocktelería de autor BlackCat">
+        <img src="/imagenes/carrousel-1.jpeg" onerror="this.onerror=null; this.src='/imagenes/carrousel-1.jpg'; if(!this.src) this.src='carrousel-1.jpeg';" alt="Cocktelería de autor BlackCat">
         <div class="carousel-caption">Cocktelería de autor y estética de vanguardia</div>
       </div>
       <div class="carousel-slide">
-        <img src="imagenes/carrousel-2.jpg" onerror="this.src='carrousel-2.jpg'" alt="Barras móviles exclusivas">
+        <img src="/imagenes/carrousel-2.jpg" onerror="this.onerror=null; this.src='carrousel-2.jpg';" alt="Barras móviles exclusivas">
         <div class="carousel-caption">Barras móviles integrales para eventos memorables</div>
       </div>
       <div class="carousel-slide">
-        <img src="imagenes/carrousel-3.jpg" onerror="this.src='carrousel-3.jpg'" alt="Experiencias interactivas">
+        <img src="/imagenes/carrousel-3.jpg" onerror="this.onerror=null; this.src='carrousel-3.jpg';" alt="Experiencias interactivas">
         <div class="carousel-caption">Tecnología, rituales e impacto sensorial</div>
       </div>
     </div>
@@ -282,7 +275,7 @@
   </div>
 </div>
 
-<!-- SECCIÓN: BARRAS (4 BARRAS NIVELADAS) -->
+<!-- SECCIÓN: BARRAS (MISMO LARGO TOTAL QUE CULTO, SIN SCROLL) -->
 <div class="sec" id="barr">
   <div class="sec-label">Nuestras propuestas</div>
   <h2>Elegí tu barra</h2>
@@ -299,16 +292,14 @@
         </div>
       </summary>
       <div class="bbody">
-        <div class="bbody-list">
-          <ul>
-            <li>Mojito Zero (Clásico o Frutos rojos)</li>
-            <li>Sunset Zero</li>
-            <li>Aguas saborizadas</li>
-            <li>Caipirinha Zero (Clásica o Frutos rojos)</li>
-            <li>Gin Tonic Zero</li>
-            <li>Green Fresh (Agua saborizada)</li>
-          </ul>
-        </div>
+        <ul>
+          <li>Mojito Zero (Clásico o Frutos rojos)</li>
+          <li>Sunset Zero</li>
+          <li>Aguas saborizadas</li>
+          <li>Caipirinha Zero (Clásica o Frutos rojos)</li>
+          <li>Gin Tonic Zero</li>
+          <li>Green Fresh (Agua saborizada)</li>
+        </ul>
         <div class="bfooter-notes">
           <em>Ideal para eventos familiares, brunchs, adolescentes o recepciones de día.</em>
         </div>
@@ -326,14 +317,12 @@
         </div>
       </summary>
       <div class="bbody">
-        <div class="bbody-list">
-          <ul>
-            <li>Gin tonic Nacional (Clásico, Berry, Herbal, Fresh)</li>
-            <li>Fernet con Coca</li>
-            <li>Cinzano con Pomelo</li>
-            <li>Cinzano con soda</li>
-          </ul>
-        </div>
+        <ul>
+          <li>Gin tonic Nacional (Clásico, Berry, Herbal, Fresh)</li>
+          <li>Fernet con Coca</li>
+          <li>Cinzano con Pomelo</li>
+          <li>Cinzano con soda</li>
+        </ul>
         <div class="bfooter-notes">
           <em>Perfecta para eventos relajados, cumpleaños y celebraciones informales.</em>
         </div>
@@ -351,27 +340,25 @@
         </div>
       </summary>
       <div class="bbody">
-        <div class="bbody-list">
-          <ul>
-            <li>Gin tonic Nacional (Clásico, Berry, Herbal, Fresh)</li>
-            <li>Fernet con Coca</li>
-            <li>Cinzano con Pomelo</li>
-            <li>Cinzano con soda</li>
-            <li>Garibaldi (Campari con naranja)</li>
-            <li>Campari con tónica</li>
-            <li>Caipiroska</li>
-            <li>Mojito</li>
-            <li>Caipi Zero (Clásica o Frutos rojos)</li>
-            <li>Green Fresh (Agua saborizada)</li>
-          </ul>
-        </div>
+        <ul>
+          <li>Gin tonic Nacional (Clásico, Berry, Herbal, Fresh)</li>
+          <li>Fernet con Coca</li>
+          <li>Cinzano con Pomelo</li>
+          <li>Cinzano con soda</li>
+          <li>Garibaldi (Campari con naranja)</li>
+          <li>Campari con tónica</li>
+          <li>Caipiroska</li>
+          <li>Mojito</li>
+          <li>Caipi Zero (Clásica o Frutos rojos)</li>
+          <li>Green Fresh (Agua saborizada)</li>
+        </ul>
         <div class="bfooter-notes">
           <em>Pensada para bodas, eventos premium o celebraciones destacadas.</em>
         </div>
       </div>
     </details>
 
-    <!-- 4. CULTO -->
+    <!-- 4. CULTO (PATRÓN DE ALTURA MÁXIMA) -->
     <details class="bcard">
       <summary class="bhead">
         <h3>CULTO</h3>
@@ -382,29 +369,27 @@
         </div>
       </summary>
       <div class="bbody">
-        <div class="bbody-list">
-          <ul>
-            <li>Gin tonic Importado (Clásico, Berry, Herbal, Fresh)</li>
-            <li>Fernet con Coca</li>
-            <li>Cinzano con Pomelo</li>
-            <li>Cinzano con soda</li>
-            <li>Garibaldi (Campari con naranja)</li>
-            <li>Campari con tónica</li>
-            <li>Caipiroska (Clásica o Frutos rojos)</li>
-            <li>Mojito (Clásico o Frutos rojos)</li>
-            <li>Aperol Spritz</li>
-            <li>Negroni</li>
-            <li>Old fashioned</li>
-            <li>Julepe de Cynar</li>
-            <li>Caipirinha (Clásica o Frutos rojos)</li>
-            <li>Mojito Zero (Clásico o Frutos rojos)</li>
-            <li>Sunset Zero</li>
-            <li>Aguas saborizadas</li>
-            <li>Caipirinha Zero (Clásica o Frutos rojos)</li>
-            <li>Gin Tonic Zero</li>
-            <li>Green Fresh (Agua saborizada)</li>
-          </ul>
-        </div>
+        <ul>
+          <li>Gin tonic Importado (Clásico, Berry, Herbal, Fresh)</li>
+          <li>Fernet con Coca</li>
+          <li>Cinzano con Pomelo</li>
+          <li>Cinzano con soda</li>
+          <li>Garibaldi (Campari con naranja)</li>
+          <li>Campari con tónica</li>
+          <li>Caipiroska (Clásica o Frutos rojos)</li>
+          <li>Mojito (Clásico o Frutos rojos)</li>
+          <li>Aperol Spritz</li>
+          <li>Negroni</li>
+          <li>Old fashioned</li>
+          <li>Julepe de Cynar</li>
+          <li>Caipirinha (Clásica o Frutos rojos)</li>
+          <li>Mojito Zero (Clásico o Frutos rojos)</li>
+          <li>Sunset Zero</li>
+          <li>Aguas saborizadas</li>
+          <li>Caipirinha Zero (Clásica o Frutos rojos)</li>
+          <li>Gin Tonic Zero</li>
+          <li>Green Fresh (Agua saborizada)</li>
+        </ul>
         <div class="bfooter-notes">
           <em>Para experiencias únicas, lanzamientos, eventos VIP o bodas de alto nivel.</em>
         </div>
@@ -413,7 +398,7 @@
   </div>
 </div>
 
-<!-- SECCIÓN: UPGRADES (TARJETAS HOMOGÉNEAS) -->
+<!-- SECCIÓN: UPGRADES -->
 <div class="sec" id="upgr">
   <div class="sec-label">Capas de valor</div>
   <h2>Upgrades opcionales</h2>
@@ -433,7 +418,7 @@
         </div>
       </div>
       <div class="upgrade-img">
-        <img src="imagenes/upgrade-ar.png" onerror="this.src='upgrade-ar.png'" alt="AR Layer">
+        <img src="/imagenes/upgrade-ar.png" onerror="this.onerror=null; this.src='/upgrade-ar.png'; if(!this.src) this.src='upgrade-ar.png';" alt="AR Layer">
       </div>
     </div>
 
@@ -451,7 +436,7 @@
         </div>
       </div>
       <div class="upgrade-img">
-        <img src="imagenes/upgrade-ritual.jpeg" onerror="this.src='imagenes/upgrade-ritual.jpg'; this.onerror=function(){this.src='upgrade-ritual.jpeg';};" alt="Deep Ritual">
+        <img src="/imagenes/upgrade-ritual.jpeg" onerror="this.onerror=null; this.src='/upgrade-ritual.jpeg'; if(!this.src) this.src='/imagenes/upgrade-ritual.jpg';" alt="Deep Ritual">
       </div>
     </div>
 
@@ -469,7 +454,7 @@
         </div>
       </div>
       <div class="upgrade-img">
-        <img src="imagenes/upgrade-aesthetic.jpeg" onerror="this.src='imagenes/upgrade-aesthetic.jpg'; this.onerror=function(){this.src='upgrade-aesthetic.jpeg';};" alt="Black Aesthetic">
+        <img src="/imagenes/upgrade-aesthetic.jpeg" onerror="this.onerror=null; this.src='/upgrade-aesthetic.jpeg'; if(!this.src) this.src='/imagenes/upgrade-aesthetic.jpg';" alt="Black Aesthetic">
       </div>
     </div>
 
@@ -487,7 +472,7 @@
         </div>
       </div>
       <div class="upgrade-img">
-        <img src="imagenes/upgrade-advergame.png" onerror="this.src='upgrade-advergame.png'" alt="Advergame Layer">
+        <img src="/imagenes/upgrade-advergame.png" onerror="this.onerror=null; this.src='/upgrade-advergame.png'; if(!this.src) this.src='upgrade-advergame.png';" alt="Advergame Layer">
       </div>
     </div>
   </div>
@@ -556,7 +541,6 @@
     autoTimer = setInterval(function() { moveSlide(1); }, 4500);
   }
 
-  // Actualizar etiqueta del botón de acordeón
   document.querySelectorAll('details.bcard').forEach(function(item) {
     item.addEventListener('toggle', function() {
       var txt = item.querySelector('.btxt');
