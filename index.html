@@ -464,3 +464,114 @@
         <img src="imagenes/upgrade-aesthetic.jpeg" data-alts="imagenes/upgrade-aesthetic.jpeg,Imagenes/upgrade-aesthetic.jpeg,upgrade-aesthetic.jpeg,imagenes/upgrade-aesthetic.jpg,upgrade-aesthetic.jpg" onerror="resolverImg(this)" alt="Black Aesthetic">
       </div>
     </div>
+
+    <!-- 04 ADVERGAME LAYER -->
+    <div class="upgrade-card">
+      <div class="upgrade-content">
+        <div class="upgrade-top">
+          <span class="upgrade-num">04</span>
+          <span class="upgrade-title">Advergame Layer</span>
+        </div>
+        <p class="upgrade-text">Dinámicas interactivas en pantallas táctiles de 46 pulgadas integradas a la barra para gamificación en eventos sociales o corporativos.</p>
+        <div class="upgrade-tags">
+          <span class="upgrade-tag">Multiplica el engagement</span>
+          <span class="upgrade-tag">Transforma el juego en datos</span>
+        </div>
+      </div>
+      <div class="upgrade-img">
+        <img src="imagenes/upgrade-advergame.png" data-alts="imagenes/upgrade-advergame.png,Imagenes/upgrade-advergame.png,upgrade-advergame.png" onerror="resolverImg(this)" alt="Advergame Layer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN: CONTACTO -->
+<div class="sec" id="cont" style="border-bottom: none;">
+  <div class="sec-label">Contacto</div>
+  <h2>¿Querés destacarte?</h2>
+  <p style="color: #bbb; font-size: 15px;">Contanos tu evento y armamos la propuesta ideal.</p>
+  <div class="cgrid">
+    <a href="https://www.instagram.com/blackcatmix" target="_blank" class="contact-link">
+      <div class="citem">
+        <div class="cl">Instagram</div>
+        <div class="cv">@blackcatmix</div>
+      </div>
+    </a>
+    <a href="https://wa.me/5493415638650" target="_blank" class="contact-link">
+      <div class="citem">
+        <div class="cl">WhatsApp</div>
+        <div class="cv">341 563 8650</div>
+      </div>
+    </a>
+    <a href="mailto:contacto@blackcatmix.com.ar" class="contact-link">
+      <div class="citem">
+        <div class="cl">Mail</div>
+        <div class="cv">contacto@blackcatmix.com.ar</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<footer>© 2025 BlackCat Bebidas &amp; Cocktails — Una experiencia que se recuerda y se comparte</footer>
+
+<!-- SCRIPTS -->
+<script>
+  // Resolvedor automático de rutas e imágenes
+  function resolverImg(img) {
+    if (!img.dataset.alts) return;
+    var lista = img.dataset.alts.split(',');
+    var pos = parseInt(img.dataset.pos || '0', 10);
+    if (pos < lista.length) {
+      img.dataset.pos = (pos + 1).toString();
+      img.src = lista[pos];
+    } else {
+      img.onerror = null;
+    }
+  }
+
+  // Carrusel
+  var currentSlide = 0;
+  var track = document.getElementById('carouselTrack');
+  var slides = document.querySelectorAll('.carousel-slide');
+  var dots = document.querySelectorAll('.dot');
+  var autoTimer = setInterval(function() { moveSlide(1); }, 4500);
+
+  function renderCarousel() {
+    if (!track) return;
+    track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+    dots.forEach(function(dot, idx) {
+      if (idx === currentSlide) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+
+  function moveSlide(dir) {
+    clearInterval(autoTimer);
+    currentSlide = (currentSlide + dir + slides.length) % slides.length;
+    renderCarousel();
+    autoTimer = setInterval(function() { moveSlide(1); }, 4500);
+  }
+
+  function setSlide(idx) {
+    clearInterval(autoTimer);
+    currentSlide = idx;
+    renderCarousel();
+    autoTimer = setInterval(function() { moveSlide(1); }, 4500);
+  }
+
+  // Texto del botón en acordeón de Barras
+  document.querySelectorAll('details.bcard').forEach(function(item) {
+    item.addEventListener('toggle', function() {
+      var txt = item.querySelector('.btxt');
+      if (txt) {
+        txt.textContent = item.open ? 'Ocultar Carta' : 'Ver Carta';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
