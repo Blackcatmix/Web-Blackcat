@@ -51,9 +51,22 @@
     .btn-p { background: #C9A84C; color: #0a0a0a; padding: 14px 42px; border: 1px solid #C9A84C; font-size: 13px; font-weight: 700; letter-spacing: 2.5px; cursor: pointer; text-transform: uppercase; transition: all 0.25s ease; border-radius: 2px; }
     .btn-p:hover { background: #e0c06a; border-color: #e0c06a; transform: translateY(-2px); }
 
-    /* CARROUSEL */
-    .carousel-section { max-width: 980px; margin: 3.5rem auto 0; padding: 0 1.5rem; }
-    .carousel-container { position: relative; width: 100%; border: 0.5px solid rgba(201, 168, 76, 0.3); border-radius: 4px; overflow: hidden; background: #111; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+    /* SECCIÓN CARROUSEL CON LÍNEA DIVISORIA Y MÁRGENES ESTÁNDAR */
+    .sec-carousel { 
+      padding: 4.5rem 2rem; 
+      border-bottom: 0.5px solid rgba(255, 255, 255, 0.12); 
+      max-width: 1100px; 
+      margin: 0 auto; 
+    }
+    .carousel-container { 
+      position: relative; 
+      width: 100%; 
+      border: 0.5px solid rgba(201, 168, 76, 0.3); 
+      border-radius: 4px; 
+      overflow: hidden; 
+      background: #111; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6); 
+    }
     .carousel-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
     .carousel-slide { min-width: 100%; width: 100%; position: relative; height: 440px; flex-shrink: 0; background: #0a0a0a; }
     .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -66,13 +79,13 @@
     .dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, 0.35); cursor: pointer; transition: all 0.25s; }
     .dot.active { background: #C9A84C; width: 24px; border-radius: 5px; }
 
-    /* SECCIONES Y COMPENSACIÓN DE CABECERA (scroll-margin-top) */
+    /* SECCIONES Y COMPENSACIÓN DE CABECERA */
     .sec { 
       padding: 4.5rem 2rem; 
       border-bottom: 0.5px solid rgba(255, 255, 255, 0.12); 
       max-width: 1100px; 
       margin: 0 auto; 
-      scroll-margin-top: 130px; /* Evita que el menú sticky corte los títulos */
+      scroll-margin-top: 130px; 
     }
     .sec-label { font-size: 11px; letter-spacing: 4px; color: #C9A84C; margin-bottom: 0.7rem; text-transform: uppercase; font-weight: 600; }
     .sec h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 38px; font-weight: 700; letter-spacing: 2px; margin-bottom: 2rem; text-transform: uppercase; }
@@ -159,7 +172,7 @@
     .bfooter-notes { margin-top: auto; padding-top: 1.2rem; border-top: 0.5px dashed rgba(255,255,255,0.12); }
     .bfooter-notes em { color: #C9A84C; font-size: 12.5px; line-height: 1.5; display: block; font-style: normal; }
 
-    /* UPGRADES (ALTURA EXACTA 250px) */
+    /* UPGRADES */
     .upgrades-list { display: flex; flex-direction: column; gap: 1.4rem; }
     .upgrade-card { 
       display: grid; 
@@ -242,20 +255,20 @@
   </div>
 </div>
 
-<!-- CARROUSEL DE IMÁGENES -->
-<div class="carousel-section">
+<!-- SECCIÓN CARROUSEL CON MARCO Y LÍNEA DIVISORIA -->
+<div class="sec-carousel">
   <div class="carousel-container">
     <div class="carousel-track" id="carouselTrack">
       <div class="carousel-slide">
-        <img src="imagenes/carrousel-1.jpeg" data-alts="imagenes/carrousel-1.jpeg,Imagenes/carrousel-1.jpeg,carrousel-1.jpeg,imagenes/carrousel-1.jpg,carrousel-1.jpg" onerror="resolverImg(this)" alt="Cocktelería de autor BlackCat">
+        <img src="./imagenes/carrousel-1.jpeg" data-alts="./imagenes/carrousel-1.jpeg,./carrousel-1.jpeg,./imagenes/carrousel-1.jpg,./carrousel-1.jpg" onerror="resolverImg(this)" alt="Cocktelería de autor BlackCat">
         <div class="carousel-caption">Cocktelería de autor y estética de vanguardia</div>
       </div>
       <div class="carousel-slide">
-        <img src="imagenes/carrousel-2.jpg" data-alts="imagenes/carrousel-2.jpg,Imagenes/carrousel-2.jpg,carrousel-2.jpg,imagenes/carrousel-2.jpeg,carrousel-2.jpeg" onerror="resolverImg(this)" alt="Barras móviles exclusivas">
+        <img src="./imagenes/carrousel-2.jpg" data-alts="./imagenes/carrousel-2.jpg,./carrousel-2.jpg,./imagenes/carrousel-2.jpeg,./carrousel-2.jpeg" onerror="resolverImg(this)" alt="Barras móviles exclusivas">
         <div class="carousel-caption">Barras móviles integrales para eventos memorables</div>
       </div>
       <div class="carousel-slide">
-        <img src="imagenes/carrousel-3.jpg" data-alts="imagenes/carrousel-3.jpg,Imagenes/carrousel-3.jpg,carrousel-3.jpg,imagenes/carrousel-3.jpeg,carrousel-3.jpeg" onerror="resolverImg(this)" alt="Experiencias interactivas">
+        <img src="./imagenes/carrousel-3.jpg" data-alts="./imagenes/carrousel-3.jpg,./carrousel-3.jpg,./imagenes/carrousel-3.jpeg,./carrousel-3.jpeg" onerror="resolverImg(this)" alt="Experiencias interactivas">
         <div class="carousel-caption">Tecnología, rituales e impacto sensorial</div>
       </div>
     </div>
@@ -425,7 +438,7 @@
         </div>
       </div>
       <div class="upgrade-img">
-        <img src="imagenes/upgrade-ar.png" data-alts="imagenes/upgrade-ar.png,Imagenes/upgrade-ar.png,upgrade-ar.png" onerror="resolverImg(this)" alt="AR Layer">
+        <img src="./imagenes/upgrade-ar.png" data-alts="./imagenes/upgrade-ar.png,./upgrade-ar.png,./imagenes/upgrade-ar.jpg,./upgrade-ar.jpg" onerror="resolverImg(this)" alt="AR Layer">
       </div>
     </div>
 
@@ -443,7 +456,7 @@
         </div>
       </div>
       <div class="upgrade-img">
-        <img src="imagenes/upgrade-ritual.jpeg" data-alts="imagenes/upgrade-ritual.jpeg,Imagenes/upgrade-ritual.jpeg,upgrade-ritual.jpeg,imagenes/upgrade-ritual.jpg,upgrade-ritual.jpg" onerror="resolverImg(this)" alt="Deep Ritual">
+        <img src="./imagenes/upgrade-ritual.jpeg" data-alts="./imagenes/upgrade-ritual.jpeg,./upgrade-ritual.jpeg,./imagenes/upgrade-ritual.jpg,./upgrade-ritual.jpg" onerror="resolverImg(this)" alt="Deep Ritual">
       </div>
     </div>
 
@@ -461,7 +474,7 @@
         </div>
       </div>
       <div class="upgrade-img">
-        <img src="imagenes/upgrade-aesthetic.jpeg" data-alts="imagenes/upgrade-aesthetic.jpeg,Imagenes/upgrade-aesthetic.jpeg,upgrade-aesthetic.jpeg,imagenes/upgrade-aesthetic.jpg,upgrade-aesthetic.jpg" onerror="resolverImg(this)" alt="Black Aesthetic">
+        <img src="./imagenes/upgrade-aesthetic.jpeg" data-alts="./imagenes/upgrade-aesthetic.jpeg,./upgrade-aesthetic.jpeg,./imagenes/upgrade-aesthetic.jpg,./upgrade-aesthetic.jpg" onerror="resolverImg(this)" alt="Black Aesthetic">
       </div>
     </div>
 
@@ -479,7 +492,7 @@
         </div>
       </div>
       <div class="upgrade-img">
-        <img src="imagenes/upgrade-advergame.png" data-alts="imagenes/upgrade-advergame.png,Imagenes/upgrade-advergame.png,upgrade-advergame.png" onerror="resolverImg(this)" alt="Advergame Layer">
+        <img src="./imagenes/upgrade-advergame.png" data-alts="./imagenes/upgrade-advergame.png,./upgrade-advergame.png,./imagenes/upgrade-advergame.jpg,./upgrade-advergame.jpg" onerror="resolverImg(this)" alt="Advergame Layer">
       </div>
     </div>
   </div>
@@ -516,7 +529,7 @@
 
 <!-- SCRIPTS -->
 <script>
-  // Resolvedor automático de rutas e imágenes
+  // Resolvedor secuencial de rutas de imágenes
   function resolverImg(img) {
     if (!img.dataset.alts) return;
     var lista = img.dataset.alts.split(',');
