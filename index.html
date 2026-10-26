@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlackCat — Bebidas &amp; Cocktails</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0a0a; color: #fff; font-family: 'Barlow', sans-serif; }
+    
+    /* NAV */
+    nav { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      padding: 1rem 2rem; 
+      border-bottom: 0.5px solid #ffffff22; 
+      position: sticky; 
+      top: 0; 
+      background: #0a0a0aee; 
+      backdrop-filter: blur(8px);
+      z-index: 10; 
+    }
+    .nav-logo img { height: 85px; display: block; }
+    .nav-links { display: flex; gap: 1.5rem; margin-left: auto; }
+    .nav-links a { color: #ccc; text-decoration: none; font-size: 12px; letter-spacing: 1px; cursor: pointer; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    
+    /* HERO */
+    .hero { 
+      text-align: center; 
+      padding: 7rem 2rem 5rem; 
+      border-bottom: 0.5px solid #ffffff15; 
+      background-image: linear-gradient(to bottom, #0a0a0a88 0%, #0a0a0a77 50%, #0a0a0a 100%), url('https://i.imgur.com/KZRuJpM.jpeg'); 
+      background-size: cover; 
+      background-position: center center; 
+    }
+    .hero-eyebrow { font-size: 11px; letter-spacing: 4px; color: #C9A84C; margin-bottom: 1.5rem; text-transform: uppercase; }
+    .hero h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 52px; font-weight: 700; letter-spacing: 3px; line-height: 1.1; margin-bottom: 1.2rem; text-transform: uppercase; }
+    .hero h1 span { color: #C9A84C; }
+    .hero-sub { font-size: 15px; color: #ddd; max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.8; }
+    .btn-p { background: #C9A84C; color: #0a0a0a; padding: 13px 32px; border: none; font-size: 12px; font-weight: 700; letter-spacing: 2px; cursor: pointer; text-transform: uppercase; transition: background 0.2s; }
+    .btn-p:hover { background: #e0c06a; }
+    .btn-o { background: transparent; color: #C9A84C; padding: 13px 32px; border: 0.5px solid #C9A84C; font-size: 12px; letter-spacing: 2px; cursor: pointer; text-transform: uppercase; margin-left: 1rem; transition: all 0.2s; }
+    .btn-o:hover { background: #C9A84C22; }
+    
+    /* SECCIONES */
+    .sec { padding: 4rem 2rem; border-bottom: 0.5px solid #ffffff10; max-width: 860px; margin: 0 auto; }
+    .sec-label { font-size: 10px; letter-spacing: 4px; color: #C9A84C; margin-bottom: 0.6rem; text-transform: uppercase; }
+    .sec h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 34px; font-weight: 700; letter-spacing: 2px; margin-bottom: 2rem; text-transform: uppercase; }
+    .about { font-size: 15px; color: #bbb; line-height: 1.9; }
+    .about strong { color: #fff; }
+    
+    .feats { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .feat { border: 0.5px solid #ffffff20; padding: 1.4rem; transition: border-color 0.2s; }
+    .feat:hover { border-color: #C9A84C66; }
+    .feat-n { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: #C9A84C; letter-spacing: 2px; margin-bottom: 0.5rem; }
+    .feat h3 { font-size: 12px; font-weight: 600; letter-spacing: 1px; margin-bottom: 0.4rem; text-transform: uppercase; }
+    .feat p { font-size: 12px; color: #777; line-height: 1.6; }
+    
+    /* UPGRADES */
+    .upgrades { display: grid; gap: 0.8rem; }
+    .ucard { border: 0.5px solid #ffffff15; overflow: hidden; }
+    .uhead { display: flex; align-items: center; gap: 1rem; padding: 1.2rem 1.5rem; background: #111; cursor: pointer; transition: background 0.2s; }
+    .uhead:hover { background: #1a1a1a; }
+    .unum { font-size: 11px; color: #C9A84C; font-weight: 600; letter-spacing: 2px; min-width: 26px; }
+    .uname { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; flex: 1; }
+    .utag { font-size: 10px; color: #888; letter-spacing: 1px; border: 0.5px solid #ffffff20; padding: 3px 8px; text-transform: uppercase; }
+    .ubody { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; background: #0d0d0d; }
+    .ubody.open { max-height: 200px; padding: 1.2rem 1.5rem; }
+    .ubody p { font-size: 13px; color: #999; line-height: 1.7; margin-bottom: 0.8rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { font-size: 10px; color: #C9A84C; border: 0.5px solid #C9A84C44; padding: 3px 10px; text-transform: uppercase; letter-spacing: 1px; }
+    
+    /* BARRAS */
+    .barras { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; }
+    .bcard { border: 0.5px solid #ffffff15; overflow: hidden; cursor: pointer; transition: border-color 0.2s; }
+    .bcard:hover { border-color: #C9A84C55; }
+    .bhead { padding: 1.2rem 1rem; text-align: center; background: #111; transition: background 0.2s; }
+    .bhead:hover { background: #181818; }
+    .bcard .st { color: #C9A84C; font-size: 15px; margin-bottom: 0.5rem; }
+    .bcard h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 3px; margin-bottom: 0.3rem; }
+    .bcard .desc { font-size: 11px; color: #666; line-height: 1.5; }
+    .bbody { padding: 0 1rem; max-height: 0; overflow: hidden; transition: max-height 0.6s ease, padding 0.3s; background: #0d0d0d; font-size: 12px; color: #999; line-height: 1.7; }
+    .bbody.open { max-height: 500px; padding: 1rem; }
+    .bbody ul { padding-left: 1rem; }
+    .bbody ul li { margin-bottom: 4px; list-style-type: disc; }
+    
+    /* CONTACTO */
+    .cgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+    .contact-link { text-decoration: none; display: block; color: inherit; transition: transform 0.2s; }
+    .contact-link:hover { transform: translateY(-3px); }
+    .citem { border: 0.5px solid #ffffff15; padding: 1.2rem; background: #111; height: 100%; }
+    .citem .cl { font-size: 10px; color: #C9A84C; letter-spacing: 2px; margin-bottom: 0.4rem; text-transform: uppercase; }
+    .citem .cv { font-size: 14px; color: #ddd; }
+    
+    .gold { width: 40px; height: 1px; background: #C9A84C; margin: 0 auto 2rem; }
+    footer { text-align: center; padding: 2rem; font-size: 11px; color: #555; letter-spacing: 1px; text-transform: uppercase; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <img src="https://i.imgur.com/tCUk83c.png" alt="BlackCat Bebidas &amp; Cocktails">
+  </div>
+  <div class="nav-links">
+    <a onclick="document.getElementById('serv').scrollIntoView({behavior:'smooth'})">Servicio</a>
+    <a onclick="document.getElementById('upgr').scrollIntoView({behavior:'smooth'})">Upgrades</a>
+    <a onclick="document.getElementById('barr').scrollIntoView({behavior:'smooth'})">Barras</a>
+    <a onclick="document.getElementById('cont').scrollIntoView({behavior:'smooth'})">Contacto</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Bar Experience</div>
+  <h1>No solo<br>ofrecemos <span>bebidas</span></h1>
+  <p class="hero-sub">Diseñamos experiencias multisensoriales memorables. Cocktelería de autor, tecnología interactiva y mucho estilo para tu evento.</p>
+  <button class="btn-p" onclick="document.getElementById('cont').scrollIntoView({behavior:'smooth'})">Consultanos</button>
+  <button class="btn-o" onclick="document.getElementById('upgr').scrollIntoView({behavior:'smooth'})">Ver upgrades</button>
+</div>
+
+<div class="sec" id="serv">
+  <div class="sec-label">Quiénes somos</div>
+  <h2>Bar Experience</h2>
+  <p class="about">En un mercado donde las bebidas y los cocktails son protagonistas de encuentros sociales y momentos especiales, <strong>BlackCat nace para cubrir la creciente demanda de propuestas que combinen calidad, estilo, innovación y experiencia personalizada.</strong><br><br>Desde propuestas sin alcohol hasta barras de autor con espirituosos importados y cocktelería premium. Nos adaptamos a cada tipo de evento y público.<br><br><strong>Vos elegí tu estilo, que nosotros hacemos el resto.</strong></p>
+  <div class="feats">
+    <div class="feat"><div class="feat-n">01</div><h3>Cocktelería premium</h3><p>Desde mocktails hasta barras de autor con espirituosos importados</p></div>
+    <div class="feat"><div class="feat-n">02</div><h3>Experiencia única</h3><p>Tecnología interactiva integrada a cada evento</p></div>
+    <div class="feat"><div class="feat-n">03</div><h3>A medida</h3><p>Adaptado a empresas, marcas, bodas y celebraciones</p></div>
+    <div class="feat"><div class="feat-n">04</div><h3>Profesional</h3><p>Presentación cuidada y atención personalizada</p></div>
+  </div>
+</div>
+
+<div class="sec" id="upgr">
+  <div class="sec-label">Capas de valor</div>
+  <h2>Upgrades opcionales</h2>
+  <div class="upgrades">
+    <div class="ucard">
+      <div class="uhead" onclick="tog('u1')">
+        <span class="unum">01</span>
+        <span class="uname">Code Access</span>
+        <span class="utag">Tecnología ligera</span>
+      </div>
+      <div class="ubody" id="u1">
+        <p>QR o marcador físico que activa una micro experiencia digital: mensaje, visual, audio y realidad aumentada sutil. Moderniza sin invadir. Sorprende.</p>
+        <div class="tags"><span class="tag">QR interactivo</span><span class="tag">Realidad aumentada</span><span class="tag">Audio &amp; visual</span></div>
+      </div>
+    </div>
+    <div class="ucard">
+      <div class="uhead" onclick="tog('u2')">
+        <span class="unum">02</span>
+        <span class="uname">Deep Ritual</span>
+        <span class="utag">Alto impacto</span>
+      </div>
+      <div class="ubody" id="u2">
+        <p>Un momento ritual que eleva la percepción de cada trago. Burbujas, humo, aroma e iluminación puntual que crea algo que se recuerda.</p>
+        <div class="tags"><span class="tag">Mist &amp; bubbles</span><span class="tag">Aroma</span><span class="tag">Iluminación</span></div>
+      </div>
+    </div>
+    <div class="ucard">
+      <div class="uhead" onclick="tog('u3')">
+        <span class="unum">03</span>
+        <span class="uname">Black Aesthetic</span>
+        <span class="utag">Instagrameable</span>
+      </div>
+      <div class="ubody" id="u3">
+        <p>Elementos visuales exclusivos y carta digital interactiva. Una barra que se ve tan bien como sabe. Perfecta para posicionamiento y redes.</p>
+        <div class="tags"><span class="tag">Visual loops</span><span class="tag">Carta digital</span><span class="tag">Estética exclusiva</span></div>
+      </div>
+    </div>
+    <div class="ucard">
+      <div class="uhead" onclick="tog('u4')">
+        <span class="unum">04</span>
+        <span class="uname">Chance Layer</span>
+        <span class="utag">Experiencia lúdica</span>
+      </div>
+      <div class="ubody" id="u4">
+        <p>Pantalla táctil con juegos interactivos: The Wheel, The Trial y The Shot Call. El código llama. Vos respondés.</p>
+        <div class="tags"><span class="tag">The Wheel</span><span class="tag">The Trial</span><span class="tag">The Shot Call</span><span class="tag">Gamification</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec" id="barr">
+  <div class="sec-label">Nuestras propuestas</div>
+  <h2>Elegí tu barra</h2>
+  <div class="barras">
+    <div class="bcard" onclick="tog('b1')">
+      <div class="bhead"><div class="st" style="color: #888;">○</div><h3>ZERO</h3><div class="desc">Cero alcohol. Cien por ciento sabor.</div></div>
+      <div class="bbody" id="b1">
+        <ul><li>Mocktails (cocktails sin alcohol)</li><li>Aguas saborizadas</li></ul><br>
+        <em style="color:#C9A84C;font-size:11px">Ideal para eventos familiares, brunchs, adolescentes o recepciones de día.</em>
+      </div>
+    </div>
+    <div class="bcard" onclick="tog('b2')">
+      <div class="bhead"><div class="st" style="color: #C9A84C;">★</div><h3>BRONCE</h3><div class="desc">Simple, directa y con toda la onda.</div></div>
+      <div class="bbody" id="b2">
+        <ul><li>Gin tonic</li><li>Vodka con naranja</li><li>Vodka con sprite</li><li>Fernet con coca</li></ul><br>
+        <em style="color:#C9A84C;font-size:11px">Perfecta para eventos relajados, cumpleaños y celebraciones informales.</em>
+      </div>
+    </div>
+    <div class="bcard" onclick="tog('b3')">
+      <div class="bhead"><div class="st" style="color: #C9A84C;">★★</div><h3>PLATA</h3><div class="desc">Clásicos que nunca fallan.</div></div>
+      <div class="bbody" id="b3">
+        <ul>
+          <li style="font-weight: bold;">Barra Bronce <span style="color: #C9A84C;">★</span></li>
+          <li>Cuba libre</li>
+          <li>Campari con naranja</li>
+          <li>Mojito</li>
+          <li>Caipirinha</li>
+        </ul><br>
+        <em style="color:#C9A84C;font-size:11px">Para quienes buscan algo accesible pero con más opciones.</em>
+      </div>
+    </div>
+    <div class="bcard" style="border-color:#C9A84C66" onclick="tog('b4')">
+      <div class="bhead"><div class="st" style="color: #C9A84C;">★★★</div><h3>ORO</h3><div class="desc">Con el ojo en cada detalle.</div></div>
+      <div class="bbody" id="b4">
+        <ul>
+          <li style="font-weight: bold;">Barra Plata <span style="color: #C9A84C;">★★</span></li>
+          <li>Aperol spritz</li>
+          <li>Caipiroska</li>
+          <li>Vermut con pomelo</li>
+          <li>Mocktails (2)</li>
+          <li>Jugos naturales (2)</li>
+        </ul><br>
+        <em style="color:#C9A84C;font-size:11px">Pensada para bodas, eventos premium o celebraciones destacadas.</em>
+      </div>
+    </div>
+    <div class="bcard" onclick="tog('b5')">
+      <div class="bhead"><div class="st" style="color: #C9A84C;">★★★★</div><h3>PLATINO</h3><div class="desc">Lo mejor. Sin lugar a dudas.</div></div>
+      <div class="bbody" id="b5">
+        <ul>
+          <li style="font-weight: bold;">Barra Zero <span style="color: #C9A84C;">○</span></li>
+          <li style="font-weight: bold;">Barra Oro <span style="color: #C9A84C;">★★★</span></li>
+          <li>Negroni</li>
+          <li>Old fashioned</li>
+          <li>Manhattan</li>
+          <li>Frozen daiquiri</li>
+          <li>Boulevardier</li>
+        </ul><br>
+        <em style="color:#C9A84C;font-size:11px">Para experiencias únicas, lanzamientos, eventos VIP o bodas de alto nivel.</em>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec" id="cont">
+  <div class="gold"></div>
+  <div class="sec-label">Contacto</div>
+  <h2>¿Querés destacarte?</h2>
+  <p style="color:#888;font-size:14px">Contanos tu evento y armamos la propuesta ideal.</p>
+  <div class="cgrid">
+    <a href="https://www.instagram.com/blackcatmix" target="_blank" class="contact-link">
+      <div class="citem"><div class="cl">Instagram</div><div class="cv">@blackcatmix</div></div>
+    </a>
+    <a href="https://wa.me/5493415638650" target="_blank" class="contact-link">
+      <div class="citem"><div class="cl">WhatsApp</div><div class="cv">341 563 8650</div></div>
+    </a>
+    <a href="mailto:blackcatmix1@gmail.com" class="contact-link">
+      <div class="citem"><div class="cl">Mail</div><div class="cv">blackcatmix1@gmail.com</div></div>
+    </a>
+  </div>
+</div>
+
+<footer>© 2025 BlackCat Bebidas &amp; Cocktails — Una experiencia que se recuerda y se comparte</footer>
+
+<script>
+  function tog(id) { 
+    document.getElementById(id).classList.toggle('open'); 
+  }
+</script>
+
+</body>
+</html>
