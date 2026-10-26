@@ -51,7 +51,7 @@
     .btn-p { background: #C9A84C; color: #0a0a0a; padding: 14px 42px; border: 1px solid #C9A84C; font-size: 13px; font-weight: 700; letter-spacing: 2.5px; cursor: pointer; text-transform: uppercase; transition: all 0.25s ease; border-radius: 2px; }
     .btn-p:hover { background: #e0c06a; border-color: #e0c06a; transform: translateY(-2px); }
 
-    /* SECCIÓN CARROUSEL CON LÍNEA DIVISORIA Y MÁRGENES */
+    /* SECCIÓN CARROUSEL CON MARCO Y LÍNEA DIVISORIA */
     .sec-carousel { 
       padding: 4.5rem 2rem; 
       border-bottom: 0.5px solid rgba(255, 255, 255, 0.12); 
@@ -79,7 +79,7 @@
     .dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, 0.35); cursor: pointer; transition: all 0.25s; }
     .dot.active { background: #C9A84C; width: 24px; border-radius: 5px; }
 
-    /* SECCIONES Y COMPENSACIÓN DE CABECERA */
+    /* SECCIONES Y COMPENSACIÓN DE NAVEGACIÓN */
     .sec { 
       padding: 4.5rem 2rem; 
       border-bottom: 0.5px solid rgba(255, 255, 255, 0.12); 
@@ -100,12 +100,12 @@
     .feat h3 { font-size: 13px; font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem; text-transform: uppercase; color: #fff; }
     .feat p { font-size: 13px; color: #bbb; line-height: 1.6; }
 
-    /* BARRAS (SISTEMA DE ACORDEÓN INDEPENDIENTE) */
+    /* BARRAS (ACORDEÓN INDEPENDIENTE) */
     .barras-grid { 
       display: grid; 
       grid-template-columns: repeat(4, 1fr); 
       gap: 1.2rem; 
-      align-items: start; /* Permite que cada caja tenga su propio alto sin estirar a las demás */
+      align-items: start; 
       width: 100%;
     }
     .bcard { 
@@ -153,7 +153,7 @@
     .bcard.is-open .btrigger { color: #C9A84C; border-color: #C9A84C; background: rgba(201,168,76,0.08); }
     
     .bbody { 
-      display: none; /* Inician plegadas limpiamente */
+      display: none; 
       background: #0d0d0d; 
       font-size: 13.5px; 
       color: #dedede; 
@@ -193,7 +193,7 @@
     .upgrade-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; filter: brightness(0.9); transition: filter 0.3s; }
     .upgrade-card:hover .upgrade-img img { filter: brightness(1); }
 
-    /* CONTACTO CON ALTO PROPORCIONAL Y MISMA ALINEACIÓN */
+    /* CONTACTO ALINEADO */
     .sec-contact {
       min-height: 80vh; 
       display: flex;
@@ -257,20 +257,20 @@
   </div>
 </div>
 
-<!-- SECCIÓN CARROUSEL CON MARCO Y LÍNEA DIVISORIA -->
+<!-- SECCIÓN CARROUSEL -->
 <div class="sec-carousel">
   <div class="carousel-container">
     <div class="carousel-track" id="carouselTrack">
       <div class="carousel-slide">
-        <img src="imagenes/carrousel-1.jpeg" data-alts="imagenes/carrousel-1.jpeg,imagenes/carrousel-1.jpeg.jpeg,carrousel-1.jpeg,carrousel-1.jpeg.jpeg,imagenes/carrousel-1.jpg,carrousel-1.jpg" onerror="resolverImg(this)" alt="Cocktelería de autor BlackCat">
+        <img src="imagenes/carrousel-1.jpeg" alt="Cocktelería de autor BlackCat">
         <div class="carousel-caption">Cocktelería de autor y estética de vanguardia</div>
       </div>
       <div class="carousel-slide">
-        <img src="imagenes/carrousel-2.jpg" data-alts="imagenes/carrousel-2.jpg,carrousel-2.jpg,imagenes/carrousel-2.jpeg,carrousel-2.jpeg" onerror="resolverImg(this)" alt="Barras móviles exclusivas">
+        <img src="imagenes/carrousel-2.jpg" alt="Barras móviles exclusivas">
         <div class="carousel-caption">Barras móviles integrales para eventos memorables</div>
       </div>
       <div class="carousel-slide">
-        <img src="imagenes/carrousel-3.jpg" data-alts="imagenes/carrousel-3.jpg,carrousel-3.jpg,imagenes/carrousel-3.jpeg,carrousel-3.jpeg" onerror="resolverImg(this)" alt="Experiencias interactivas">
+        <img src="imagenes/carrousel-3.jpg" alt="Experiencias interactivas">
         <div class="carousel-caption">Tecnología, rituales e impacto sensorial</div>
       </div>
     </div>
@@ -297,7 +297,7 @@
   </div>
 </div>
 
-<!-- SECCIÓN: BARRAS (ACORDEÓN INDEPENDIENTE) -->
+<!-- SECCIÓN: BARRAS (ACORDEÓN INDIVIDUAL) -->
 <div class="sec" id="barr">
   <div class="sec-label">Nuestras propuestas</div>
   <h2>Elegí tu barra</h2>
@@ -440,7 +440,7 @@
         </div>
       </div>
       <div class="upgrade-img">
-        <img src="imagenes/upgrade-ar.png" data-alts="imagenes/upgrade-ar.png,upgrade-ar.png,imagenes/upgrade-ar.jpg,upgrade-ar.jpg" onerror="resolverImg(this)" alt="AR Layer">
+        <img src="imagenes/upgrade-ar.png" alt="AR Layer">
       </div>
     </div>
 
@@ -458,7 +458,7 @@
         </div>
       </div>
       <div class="upgrade-img">
-        <img src="imagenes/upgrade-ritual.jpeg" data-alts="imagenes/upgrade-ritual.jpeg,upgrade-ritual.jpeg,imagenes/upgrade-ritual.jpg,upgrade-ritual.jpg" onerror="resolverImg(this)" alt="Deep Ritual">
+        <img src="imagenes/upgrade-ritual.jpeg" alt="Deep Ritual">
       </div>
     </div>
 
@@ -476,7 +476,7 @@
         </div>
       </div>
       <div class="upgrade-img">
-        <img src="imagenes/upgrade-aesthetic.jpeg" data-alts="imagenes/upgrade-aesthetic.jpeg,upgrade-aesthetic.jpeg,imagenes/upgrade-aesthetic.jpg,upgrade-aesthetic.jpg" onerror="resolverImg(this)" alt="Black Aesthetic">
+        <img src="imagenes/upgrade-aesthetic.jpeg" alt="Black Aesthetic">
       </div>
     </div>
 
@@ -494,13 +494,13 @@
         </div>
       </div>
       <div class="upgrade-img">
-        <img src="imagenes/upgrade-advergame.png" data-alts="imagenes/upgrade-advergame.png,upgrade-advergame.png,imagenes/upgrade-advergame.jpg,upgrade-advergame.jpg" onerror="resolverImg(this)" alt="Advergame Layer">
+        <img src="imagenes/upgrade-advergame.png" alt="Advergame Layer">
       </div>
     </div>
   </div>
 </div>
 
-<!-- SECCIÓN: CONTACTO (ALINEADA Y CON AIRE EXACTO) -->
+<!-- SECCIÓN: CONTACTO -->
 <div class="sec sec-contact" id="cont">
   <div class="sec-label">Contacto</div>
   <h2>¿Querés destacarte?</h2>
@@ -529,22 +529,9 @@
 
 <footer>© 2025 BlackCat Bebidas &amp; Cocktails — Una experiencia que se recuerda y se comparte</footer>
 
-<!-- SCRIPTS DE COMPORTAMIENTO -->
+<!-- SCRIPTS -->
 <script>
-  // Resolvedor inteligente de fallos de imágenes
-  function resolverImg(img) {
-    if (!img.dataset.alts) return;
-    var lista = img.dataset.alts.split(',');
-    var pos = parseInt(img.dataset.pos || '0', 10);
-    if (pos < lista.length) {
-      img.dataset.pos = (pos + 1).toString();
-      img.src = lista[pos];
-    } else {
-      img.onerror = null;
-    }
-  }
-
-  // Acordeón individual de Barras
+  // Control de acordeón individual para Barras
   function toggleBar(cardId) {
     var card = document.getElementById(cardId);
     if (!card) return;
